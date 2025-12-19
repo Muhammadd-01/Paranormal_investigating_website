@@ -213,6 +213,192 @@ export function ServicesClientPage() {
 
       <SectionDivider />
 
+      {/* Paranormal Investigation & Site Analysis Services */}
+      <section ref={addToRefs} className="container mx-auto px-4 py-20 opacity-0">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16 space-y-4">
+            <h2 className="text-4xl md:text-5xl font-[family-name:var(--font-cinzel)] font-bold text-balance">
+              Paranormal Investigation & Site Analysis
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Professional Islamic paranormal investigation services for homes, businesses, and locations experiencing
+              unexplained phenomena
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <Card className="group border-2 border-border hover:border-primary/50 bg-card/30 backdrop-blur-sm transition-all duration-500 hover:shadow-xl hover:shadow-primary/20">
+              <CardContent className="p-8 space-y-6">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
+                  <Shield className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="text-2xl font-[family-name:var(--font-cinzel)] font-bold">Residential Investigation</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Comprehensive investigation of homes and residential properties experiencing paranormal activity,
+                  including unexplained sounds, movements, negative energy, or Jinn presence.
+                </p>
+                <ul className="space-y-3">
+                  {[
+                    "On-site assessment and evaluation (2-4 hours)",
+                    "Islamic environmental analysis",
+                    "Detection of spiritual anomalies",
+                    "Detailed written investigation report",
+                    "Home cleansing and protection protocols",
+                    "Follow-up support for 30 days",
+                  ].map((item, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-muted-foreground">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card className="group border-2 border-border hover:border-primary/50 bg-card/30 backdrop-blur-sm transition-all duration-500 hover:shadow-xl hover:shadow-primary/20">
+              <CardContent className="p-8 space-y-6">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
+                  <BookOpen className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="text-2xl font-[family-name:var(--font-cinzel)] font-bold">
+                  Commercial Site Investigation
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Professional investigation services for businesses, offices, and commercial properties affected by
+                  spiritual disturbances impacting operations and employee wellbeing.
+                </p>
+                <ul className="space-y-3">
+                  {[
+                    "After-hours site investigation (4-6 hours)",
+                    "Energy mapping and analysis",
+                    "Employee interview and documentation",
+                    "Comprehensive investigation report with photos",
+                    "Business-specific spiritual protection plan",
+                    "Discreet and professional service",
+                  ].map((item, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-muted-foreground">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+
+          <Card className="border-2 border-primary/30 bg-gradient-to-br from-card/80 to-primary/5 backdrop-blur-sm">
+            <CardContent className="p-8 lg:p-12 space-y-8">
+              <h3 className="text-3xl font-[family-name:var(--font-cinzel)] font-bold text-center">
+                Our Investigation Process
+              </h3>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {[
+                  {
+                    step: "1",
+                    title: "Initial Consultation",
+                    description:
+                      "Phone or video interview to understand the situation, gather history, and determine if investigation is needed.",
+                  },
+                  {
+                    step: "2",
+                    title: "Site Assessment",
+                    description:
+                      "On-location evaluation using Islamic methodology, environmental analysis, and documentation of phenomena.",
+                  },
+                  {
+                    step: "3",
+                    title: "Analysis & Report",
+                    description:
+                      "Comprehensive analysis of findings, Islamic perspective on the situation, and detailed written report.",
+                  },
+                  {
+                    step: "4",
+                    title: "Solution Implementation",
+                    description:
+                      "Ruqyah treatment, spiritual cleansing, protection protocols, and ongoing support until resolved.",
+                  },
+                ].map((item, index) => (
+                  <div
+                    key={item.step}
+                    className="relative space-y-4 p-6 rounded-lg bg-background/50 border border-border/50 hover:border-primary/30 transition-all duration-300 hover:-translate-y-2"
+                    style={{
+                      animationDelay: `${index * 100}ms`,
+                    }}
+                  >
+                    <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-2xl font-bold text-primary font-[family-name:var(--font-cinzel)]">
+                      {item.step}
+                    </div>
+                    <h4 className="text-lg font-[family-name:var(--font-cinzel)] font-bold">{item.title}</h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="space-y-6 mt-12 pt-12 border-t border-border/50">
+                <h4 className="text-2xl font-[family-name:var(--font-cinzel)] font-bold text-center">
+                  Why Hire Our Investigation Team?
+                </h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {[
+                    {
+                      title: "Islamic Methodology",
+                      description:
+                        "All investigations conducted according to Qur'an and Sunnah, avoiding innovations and superstitions.",
+                    },
+                    {
+                      title: "Experienced Researchers",
+                      description:
+                        "Team of trained Islamic scholars and paranormal researchers with years of field experience.",
+                    },
+                    {
+                      title: "Confidential Service",
+                      description: "Complete discretion guaranteed. Your privacy and dignity are our top priorities.",
+                    },
+                    {
+                      title: "Comprehensive Solutions",
+                      description:
+                        "Not just investigation - we provide complete spiritual healing and protection solutions.",
+                    },
+                    {
+                      title: "24/7 Emergency Response",
+                      description: "Available for urgent cases requiring immediate investigation and intervention.",
+                    },
+                    {
+                      title: "Proven Track Record",
+                      description:
+                        "Successfully resolved hundreds of cases. View our case studies for detailed examples.",
+                    },
+                  ].map((item, index) => (
+                    <div
+                      key={index}
+                      className="flex gap-4 p-4 rounded-lg bg-background/30 border border-border/30 hover:border-primary/30 transition-all duration-300"
+                    >
+                      <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                      <div className="space-y-1">
+                        <h5 className="font-bold text-foreground">{item.title}</h5>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="text-center pt-8">
+                <Button asChild size="lg" className="group">
+                  <Link href="/cases">
+                    View Our Case Studies
+                    <ChevronRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      <SectionDivider />
+
       {/* Service Formats */}
       <section ref={addToRefs} className="container mx-auto px-4 py-20 opacity-0">
         <h2 className="text-4xl md:text-5xl font-[family-name:var(--font-cinzel)] font-bold text-center text-balance mb-16">
