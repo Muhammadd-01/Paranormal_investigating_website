@@ -1,5 +1,4 @@
 "use client"
-
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { WhatsAppButton } from "@/components/whatsapp-button"
@@ -9,13 +8,56 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Phone, Mail, MapPin, Clock, MessageSquare, Send, ChevronRight } from "lucide-react"
-import Image from "next/image"
+import { Phone, Mail, MapPin, Clock, MessageSquare, Send, Loader2, CheckCircle, XCircle } from "lucide-react"
 import { ORG_CONFIG } from "@/lib/constants"
 import { useLanguage } from "@/context/LanguageContext"
+import { useState, useEffect } from "react"
 
 export default function ContactClient() {
     const { t, dir } = useLanguage()
+    const [loading, setLoading] = useState(false)
+    const [toast, setToast] = useState<{ type: 'success' | 'error'; message: string } | null>(null)
+
+    // Auto-hide toast after 3 seconds
+    useEffect(() => {
+        if (toast) {
+            const timer = setTimeout(() => {
+                setToast(null)
+            }, 3000)
+            return () => clearTimeout(timer)
+        }
+    }, [toast])
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        setLoading(true)
+        setToast(null)
+
+        const form = e.currentTarget
+        const formData = new FormData(form)
+
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+
+            if (response.ok) {
+                setToast({ type: 'success', message: 'Message sent successfully!' })
+                form.reset()
+            } else {
+                const data = await response.json()
+                setToast({ type: 'error', message: data.error || 'Something went wrong. Please try again.' })
+            }
+        } catch (err) {
+            setToast({ type: 'error', message: 'Network error. Please check your connection and try again.' })
+        } finally {
+            setLoading(false)
+        }
+    }
 
     return (
         <div className="min-h-screen bg-background">
@@ -35,7 +77,6 @@ export default function ContactClient() {
                     </div>
                 </div>
             </section>
-
             <SectionDivider />
 
             {/* Contact Information & Form Section */}
@@ -52,7 +93,6 @@ export default function ContactClient() {
                                     {t("contact_desc")}
                                 </p>
                             </div>
-
                             {/* Contact Cards */}
                             <div className="space-y-6">
                                 <Card className="p-6 md:p-8 bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 hover:scale-[1.02] group">
@@ -69,7 +109,6 @@ export default function ContactClient() {
                                         </div>
                                     </div>
                                 </Card>
-
                                 <Card className="p-6 md:p-8 bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 hover:scale-[1.02] group">
                                     <div className="flex items-start gap-4">
                                         <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
@@ -84,7 +123,6 @@ export default function ContactClient() {
                                         </div>
                                     </div>
                                 </Card>
-
                                 <Card className="p-6 md:p-8 bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 hover:scale-[1.02] group">
                                     <div className="flex items-start gap-4">
                                         <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
@@ -99,7 +137,6 @@ export default function ContactClient() {
                                         </div>
                                     </div>
                                 </Card>
-
                                 <Card className="p-6 md:p-8 bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 hover:scale-[1.02] group">
                                     <div className="flex items-start gap-4">
                                         <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
@@ -118,12 +155,43 @@ export default function ContactClient() {
                         </div>
 
                         {/* Contact Form */}
-                        <div className="animate-slide-in-right">
-                            <Card className="p-6 md:p-10 bg-card/50 backdrop-blur-sm border-primary/30 animate-glow-border mb-8">
-                                <h2 className="text-3xl font-[family-name:var(--font-cinzel)] font-bold text-primary mb-6">
+                        <div className="animate-slide-in-right relative">
+                            <Card className="p-6 md:p-10 bg-card/50 backdrop-blur-sm border-primary/30 animate-glow-border mb-8 relative">
+                                {/* Toast Notification - Inside card, top-right beside title */}
+                                {toast && (
+                                    <div className="absolute top-8 right-8 z-50 animate-slide-in-right">
+                                        <div
+                                            className={`flex items-center gap-3 px-5 py-3 rounded-lg shadow-xl font-medium backdrop-blur-md border ${
+                                                toast.type === 'success'
+                                                    ? 'bg-primary/90 border-primary/50 shadow-primary/30'
+                                                    : 'bg-destructive/90 border-destructive/50 shadow-destructive/30'
+                                            }`}
+                                        >
+                                            {toast.type === 'success' ? (
+                                                <CheckCircle className="w-5 h-5 text-black" />
+                                            ) : (
+                                                <XCircle className="w-5 h-5 text-black" />
+                                            )}
+                                            <span className="text-sm text-black">{toast.message}</span>
+                                        </div>
+                                    </div>
+                                )}
+
+                                <h2 className="text-3xl font-[family-name:var(--font-cinzel)] font-bold text-primary mb-6 pr-48">
                                     {t("send_message")}
                                 </h2>
-                                <form className="space-y-6">
+
+                                <form
+                                    action="https://formspree.io/f/xrezdvzg"
+                                    method="POST"
+                                    className="space-y-6"
+                                    onSubmit={handleSubmit}
+                                >
+                                    {/* Hidden fields */}
+                                    <input type="hidden" name="_subject" value="New message from Darul Ruqyah website" />
+                                    <input type="hidden" name="_replyto" />
+                                    <input type="text" name="_gotcha" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
+
                                     <div className="grid sm:grid-cols-2 gap-4 md:gap-6">
                                         <div className="space-y-2">
                                             <label htmlFor="firstName" className="text-sm font-medium text-foreground/80">
@@ -131,6 +199,7 @@ export default function ContactClient() {
                                             </label>
                                             <Input
                                                 id="firstName"
+                                                name="firstName"
                                                 placeholder={t("first_name")}
                                                 className="bg-background/50 border-border/50 focus:border-primary transition-colors"
                                                 required
@@ -142,6 +211,7 @@ export default function ContactClient() {
                                             </label>
                                             <Input
                                                 id="lastName"
+                                                name="lastName"
                                                 placeholder={t("last_name")}
                                                 className="bg-background/50 border-border/50 focus:border-primary transition-colors"
                                                 required
@@ -155,6 +225,7 @@ export default function ContactClient() {
                                         </label>
                                         <Input
                                             id="email"
+                                            name="email"
                                             type="email"
                                             placeholder="your.email@example.com"
                                             className="bg-background/50 border-border/50 focus:border-primary transition-colors"
@@ -168,6 +239,7 @@ export default function ContactClient() {
                                         </label>
                                         <Input
                                             id="subject"
+                                            name="subject"
                                             placeholder={t("subject")}
                                             className="bg-background/50 border-border/50 focus:border-primary transition-colors"
                                             required
@@ -180,6 +252,7 @@ export default function ContactClient() {
                                         </label>
                                         <Textarea
                                             id="message"
+                                            name="message"
                                             placeholder={t("message")}
                                             rows={6}
                                             className="bg-background/50 border-border/50 focus:border-primary transition-colors resize-none"
@@ -187,9 +260,22 @@ export default function ContactClient() {
                                         />
                                     </div>
 
-                                    <Button className="w-full bg-primary text-background hover:bg-primary/90 text-base md:text-lg py-5 md:py-6 group transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 font-bold">
-                                        <Send className={`mr-2 h-5 w-5 group-hover:translate-x-1 transition-transform ${dir === 'rtl' ? 'rotate-180' : ''}`} />
-                                        {t("submit")}
+                                    <Button
+                                        type="submit"
+                                        disabled={loading}
+                                        className="w-full bg-primary text-background hover:bg-primary/90 text-base md:text-lg py-5 md:py-6 group transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 font-bold"
+                                    >
+                                        {loading ? (
+                                            <>
+                                                <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                                                Sending...
+                                            </>
+                                        ) : (
+                                            <>
+                                                <Send className={`mr-2 h-5 w-5 group-hover:translate-x-1 transition-transform ${dir === 'rtl' ? 'rotate-180' : ''}`} />
+                                                {t("submit")}
+                                            </>
+                                        )}
                                     </Button>
                                 </form>
                             </Card>
@@ -231,13 +317,12 @@ export default function ContactClient() {
                             </div>
                         </Card>
                     </div>
-                </div >
-            </section >
-
+                </div>
+            </section>
 
             <Footer />
             <WhatsAppButton />
             <ScrollToTop />
-        </div >
+        </div>
     )
 }
