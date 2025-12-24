@@ -52,34 +52,50 @@ export function Footer() {
             <h4 className="text-lg font-semibold text-foreground mb-4">
               {t("contact")}
             </h4>
+
             <ul className="space-y-3">
-              <li className="flex items-center gap-2 text-sm text-muted-foreground">
-                <Mail className="h-4 w-4 text-primary" />
-                <span>{ORG_CONFIG.email}</span>
+
+              {/* Email */}
+              <li className="group flex items-center gap-3 text-sm text-muted-foreground transition-all duration-300 hover:text-primary cursor-pointer">
+                <Mail className="h-4 w-4 text-primary transition-transform duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_0_6px_rgba(99,102,241,0.6)]" />
+                <a
+                  href="mailto:darulrugyah@gmail.com"
+                  className="underline-offset-4 hover:underline"
+                >
+                  darulrugyah@gmail.com
+                </a>
               </li>
 
-              <li className="flex items-center gap-2 text-sm text-muted-foreground">
-                <Phone className="h-4 w-4 text-primary" />
-                <span>{ORG_CONFIG.whatsapp.number}</span>
+              {/* Phone */}
+              <li className="group flex items-center gap-3 text-sm text-muted-foreground transition-all duration-300 hover:text-primary cursor-pointer">
+                <Phone className="h-4 w-4 text-primary transition-transform duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_0_6px_rgba(34,197,94,0.6)]" />
+                <a
+                  href="tel:+923160212457"
+                  className="underline-offset-4 hover:underline"
+                >
+                  +92 316 0212457
+                </a>
               </li>
 
-              <li className="flex items-center gap-2 text-sm text-muted-foreground">
+              {/* Location */}
+              <li className="flex items-center gap-3 text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4 text-primary" />
                 <span>{t("online")}</span>
               </li>
 
-              {/* Instagram Contact */}
-              <li className="flex items-center gap-2 text-sm text-muted-foreground">
-                <Instagram className="h-4 w-4 text-primary" />
+              {/* Instagram */}
+              <li className="group flex items-center gap-3 text-sm text-muted-foreground transition-all duration-300 hover:text-primary cursor-pointer">
+                <Instagram className="h-4 w-4 text-primary transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6 group-hover:drop-shadow-[0_0_6px_rgba(236,72,153,0.6)]" />
                 <a
                   href="https://www.instagram.com/dar_ul_rugyah?igsh=M2wwMDEzcXBiY2hu"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-primary transition-colors duration-300"
+                  className="underline-offset-4 hover:underline"
                 >
                   dar_ul_rugyah
                 </a>
               </li>
+
             </ul>
           </div>
         </div>

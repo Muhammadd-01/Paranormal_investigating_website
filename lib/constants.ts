@@ -2,11 +2,11 @@
 export const ORG_CONFIG = {
   name: "Dar ul Ruqyah",
   tagline: "Protection, Research & Healing Through Qur'an and Sunnah",
-  phone: "+1 (555) 123-4567", // Added phone number
-  email: "contact@darulruqyah.org", // Updated email
+  phone: "+92 (316) 021-2457", // Added phone number
+  email: "darulrugyah@gmail.com", // Updated email
   address: "123 Islamic Center Dr, City, State 12345", // Added address
   whatsapp: {
-    number: "+1234567890",
+    number: "+923160212457",
     message: "Assalamu Alaikum, I would like to request help with...",
   },
 } as const
