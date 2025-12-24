@@ -9,8 +9,11 @@ import { ScrollToTop } from "@/components/scroll-to-top"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { SectionDivider } from "@/components/section-divider"
 import { BookOpen, Eye, Zap, Moon, Flame, Brain, ScrollText, Users2 } from "lucide-react"
+import { useLanguage } from "@/context/LanguageContext"
+
 
 export default function ResearchClientPage() {
+  const { t } = useLanguage()
   const sectionsRef = useRef<HTMLElement[]>([])
 
   useEffect(() => {
@@ -54,67 +57,68 @@ export default function ResearchClientPage() {
         </div>
         <div className="relative max-w-4xl mx-auto text-center space-y-6">
           <h1 className="text-5xl md:text-6xl font-[family-name:var(--font-cinzel)] font-bold text-balance animate-fade-in-up">
-            Islamic <span className="text-primary">Research</span>
+            {t("research_title")}
           </h1>
           <p className="text-xl text-muted-foreground animate-fade-in-up [animation-delay:200ms] opacity-0 [animation-fill-mode:forwards]">
-            Scholarly investigation into the unseen world through Qur&apos;an and Sunnah
+            {t("research_subtitle")}
           </p>
         </div>
       </section>
+
 
       <SectionDivider />
 
       {/* Research Areas */}
       <section ref={addToRefs} className="container mx-auto px-4 py-20 opacity-0">
         <h2 className="text-4xl md:text-5xl font-[family-name:var(--font-cinzel)] font-bold text-center text-balance mb-16">
-          Areas of Research
+          {t("res_area_title")}
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {[
             {
               icon: Moon,
-              title: "Jinn & Their Nature",
-              description: "Understanding the creation, abilities, and limitations of Jinn according to Islamic texts",
+              title: t("res_area_jinn_title"),
+              description: t("res_area_jinn_desc"),
             },
             {
               icon: Zap,
-              title: "Sihr (Magic)",
-              description: "The reality of magic in Islam, its types, effects, and proper Islamic responses",
+              title: t("res_area_sihr_title"),
+              description: t("res_area_sihr_desc"),
             },
             {
               icon: Eye,
-              title: "Evil Eye (Ayn)",
-              description: "Scientific and Islamic perspective on the evil eye, its impact, and prevention",
+              title: t("res_area_eye_title"),
+              description: t("res_area_eye_desc"),
             },
             {
               icon: Flame,
-              title: "Jinn Possession",
-              description: "Authentic Islamic stance on possession, symptoms, and treatment methodologies",
+              title: t("res_area_poss_title"),
+              description: t("res_area_poss_desc"),
             },
             {
               icon: Brain,
-              title: "Psychology vs Spirituality",
-              description: "Distinguishing between mental health conditions and genuine spiritual afflictions",
+              title: t("res_area_psy_title"),
+              description: t("res_area_psy_desc"),
             },
             {
               icon: BookOpen,
-              title: "Ruqyah Methodology",
-              description: "Evidence-based Ruqyah practices from Qur'an, Sunnah, and scholarly consensus",
+              title: t("res_area_ruq_title"),
+              description: t("res_area_ruq_desc"),
             },
             {
               icon: ScrollText,
-              title: "Prophetic Medicine",
-              description: "Spiritual healing practices taught by Prophet Muhammad ﷺ and their applications",
+              title: t("res_area_prop_title"),
+              description: t("res_area_prop_desc"),
             },
             {
               icon: Users2,
-              title: "Case Studies",
-              description: "Documented cases with analysis of symptoms, treatments, and outcomes",
+              title: t("res_area_case_title"),
+              description: t("res_area_case_desc"),
             },
           ].map((area, index) => (
             <Card
-              key={area.title}
+              key={index}
               className="group border-2 border-border hover:border-primary/50 bg-card/30 backdrop-blur-sm transition-all duration-500 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-3"
               style={{
                 animationDelay: `${index * 100}ms`,
@@ -140,11 +144,10 @@ export default function ResearchClientPage() {
         <div className="max-w-5xl mx-auto space-y-12">
           <div className="text-center space-y-4">
             <h2 className="text-4xl font-[family-name:var(--font-cinzel)] font-bold text-balance">
-              Understanding Jinn in Islam
+              {t("jinn_intro_title")}
             </h2>
             <p className="text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Jinn are a fundamental part of Islamic belief, mentioned extensively in the Qur&apos;an and Hadith. Our
-              research compiles authentic Islamic knowledge about these unseen beings.
+              {t("jinn_intro_desc")}
             </p>
           </div>
 
@@ -152,20 +155,20 @@ export default function ResearchClientPage() {
             <Card className="border-2 border-border bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-all duration-500">
               <CardContent className="p-8 space-y-4">
                 <h3 className="text-2xl font-[family-name:var(--font-cinzel)] font-bold text-primary">
-                  Creation & Nature
+                  {t("jinn_creation_title")}
                 </h3>
                 <ul className="space-y-3 text-muted-foreground">
-                  <li className="leading-relaxed">• Created from smokeless fire (Surah Ar-Rahman 55:15)</li>
+                  <li className="leading-relaxed">• {t("jinn_creation_l1")}</li>
                   <li className="leading-relaxed">
-                    • Possess free will and intellect, capable of belief and disbelief
+                    • {t("jinn_creation_l2")}
                   </li>
                   <li className="leading-relaxed">
-                    • Live in a parallel world invisible to humans under normal circumstances
+                    • {t("jinn_creation_l3")}
                   </li>
-                  <li className="leading-relaxed">• Have communities, families, and religions similar to humans</li>
-                  <li className="leading-relaxed">• Accountable for their actions on the Day of Judgment</li>
+                  <li className="leading-relaxed">• {t("jinn_creation_l4")}</li>
+                  <li className="leading-relaxed">• {t("jinn_creation_l5")}</li>
                   <li className="leading-relaxed">
-                    • Can take various forms but their natural state is invisible to human eyes
+                    • {t("jinn_creation_l6")}
                   </li>
                 </ul>
               </CardContent>
@@ -173,26 +176,22 @@ export default function ResearchClientPage() {
 
             <Card className="border-2 border-border bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-all duration-500">
               <CardContent className="p-8 space-y-4">
-                <h3 className="text-2xl font-[family-name:var(--font-cinzel)] font-bold text-primary">Types of Jinn</h3>
+                <h3 className="text-2xl font-[family-name:var(--font-cinzel)] font-bold text-primary">{t("jinn_types_title")}</h3>
                 <ul className="space-y-3 text-muted-foreground">
                   <li className="leading-relaxed">
-                    <strong className="text-foreground">Believer Jinn:</strong> Muslims among Jinn who worship Allah and
-                    follow Islamic teachings
+                    <strong className="text-foreground">{t("jinn_type_1_label")}</strong> {t("jinn_type_1_text")}
                   </li>
                   <li className="leading-relaxed">
-                    <strong className="text-foreground">Disbeliever Jinn:</strong> Kafir Jinn who reject faith and may
-                    harm humans
+                    <strong className="text-foreground">{t("jinn_type_2_label")}</strong> {t("jinn_type_2_text")}
                   </li>
                   <li className="leading-relaxed">
-                    <strong className="text-foreground">Shayateen:</strong> Devils among Jinn, followers of Iblis who
-                    actively mislead humans
+                    <strong className="text-foreground">{t("jinn_type_3_label")}</strong> {t("jinn_type_3_text")}
                   </li>
                   <li className="leading-relaxed">
-                    <strong className="text-foreground">Marid:</strong> Powerful and rebellious Jinn mentioned in
-                    Islamic texts
+                    <strong className="text-foreground">{t("jinn_type_4_label")}</strong> {t("jinn_type_4_text")}
                   </li>
                   <li className="leading-relaxed">
-                    <strong className="text-foreground">Ifrit:</strong> Strong and cunning Jinn with significant power
+                    <strong className="text-foreground">{t("jinn_type_5_label")}</strong> {t("jinn_type_5_text")}
                   </li>
                 </ul>
               </CardContent>
@@ -201,26 +200,26 @@ export default function ResearchClientPage() {
             <Card className="border-2 border-border bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-all duration-500">
               <CardContent className="p-8 space-y-4">
                 <h3 className="text-2xl font-[family-name:var(--font-cinzel)] font-bold text-primary">
-                  Abilities & Limitations
+                  {t("jinn_ability_title")}
                 </h3>
                 <div className="space-y-4 text-muted-foreground">
                   <div>
-                    <p className="font-semibold text-foreground mb-2">What Jinn Can Do:</p>
+                    <p className="font-semibold text-foreground mb-2">{t("jinn_can_title")}</p>
                     <ul className="space-y-2">
-                      <li>• Move at extremely high speeds</li>
-                      <li>• Take various physical forms (animals, humans, etc.)</li>
-                      <li>• Enter human bodies under certain conditions</li>
-                      <li>• Whisper suggestions and doubts into human hearts</li>
-                      <li>• Carry information from one place to another</li>
+                      <li>• {t("jinn_can_l1")}</li>
+                      <li>• {t("jinn_can_l2")}</li>
+                      <li>• {t("jinn_can_l3")}</li>
+                      <li>• {t("jinn_can_l4")}</li>
+                      <li>• {t("jinn_can_l5")}</li>
                     </ul>
                   </div>
                   <div>
-                    <p className="font-semibold text-foreground mb-2">What Jinn Cannot Do:</p>
+                    <p className="font-semibold text-foreground mb-2">{t("jinn_cant_title")}</p>
                     <ul className="space-y-2">
-                      <li>• Know the unseen (only Allah has complete knowledge of Ghayb)</li>
-                      <li>• Force humans to sin (they can only suggest)</li>
-                      <li>• Harm those under Allah&apos;s protection</li>
-                      <li>• Access the heavens to eavesdrop (guarded by angels)</li>
+                      <li>• {t("jinn_cant_l1")}</li>
+                      <li>• {t("jinn_cant_l2")}</li>
+                      <li>• {t("jinn_cant_l3")}</li>
+                      <li>• {t("jinn_cant_l4")}</li>
                     </ul>
                   </div>
                 </div>
@@ -230,22 +229,20 @@ export default function ResearchClientPage() {
             <Card className="border-2 border-border bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-all duration-500">
               <CardContent className="p-8 space-y-4">
                 <h3 className="text-2xl font-[family-name:var(--font-cinzel)] font-bold text-primary">
-                  Qur&apos;anic Evidence
+                  {t("jinn_quran_title")}
                 </h3>
                 <div className="space-y-4">
                   <blockquote className="border-l-4 border-primary pl-4 italic text-foreground/90">
-                    &quot;And I did not create the jinn and mankind except to worship Me.&quot;
-                    <p className="text-sm text-primary mt-2">— Surah Adh-Dhariyat (51:56)</p>
+                    &quot;{t("jinn_quran_1_text")}&quot;
+                    <p className="text-sm text-primary mt-2">— {t("jinn_quran_1_src")}</p>
                   </blockquote>
                   <blockquote className="border-l-4 border-primary pl-4 italic text-foreground/90">
-                    &quot;Say: It has been revealed to me that a company of Jinn listened and said: We have heard a
-                    wonderful Qur&apos;an!&quot;
-                    <p className="text-sm text-primary mt-2">— Surah Al-Jinn (72:1)</p>
+                    &quot;{t("jinn_quran_2_text")}&quot;
+                    <p className="text-sm text-primary mt-2">— {t("jinn_quran_2_src")}</p>
                   </blockquote>
                   <blockquote className="border-l-4 border-primary pl-4 italic text-foreground/90">
-                    &quot;And there were men among mankind who sought refuge in men among the jinn, so they increased
-                    them in burden.&quot;
-                    <p className="text-sm text-primary mt-2">— Surah Al-Jinn (72:6)</p>
+                    &quot;{t("jinn_quran_3_text")}&quot;
+                    <p className="text-sm text-primary mt-2">— {t("jinn_quran_3_src")}</p>
                   </blockquote>
                 </div>
               </CardContent>
@@ -261,11 +258,10 @@ export default function ResearchClientPage() {
         <div className="max-w-5xl mx-auto space-y-12">
           <div className="text-center space-y-4">
             <h2 className="text-4xl font-[family-name:var(--font-cinzel)] font-bold text-balance">
-              The Reality of Sihr (Magic) in Islam
+              {t("sihr_intro_title")}
             </h2>
             <p className="text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Sihr (magic/sorcery) is explicitly acknowledged and condemned in Islam. Understanding its reality helps
-              believers protect themselves and respond appropriately.
+              {t("sihr_intro_desc")}
             </p>
           </div>
 
@@ -273,23 +269,18 @@ export default function ResearchClientPage() {
             <Card className="border-2 border-primary/30 bg-card/50 backdrop-blur-sm">
               <CardContent className="p-8 space-y-6">
                 <h3 className="text-2xl font-[family-name:var(--font-cinzel)] font-bold text-primary">
-                  Definition & Islamic Ruling
+                  {t("sihr_def_title")}
                 </h3>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
-                    Sihr is defined as deception and manipulation through forbidden means, often involving seeking help
-                    from Jinn and devils. It is one of the major sins in Islam and can nullify one&apos;s faith if not
-                    repented from.
+                    {t("sihr_def_text")}
                   </p>
                   <blockquote className="border-l-4 border-primary pl-4 italic text-foreground/90">
-                    &quot;And they followed what the devils recited during the reign of Solomon. It was not Solomon who
-                    disbelieved, but the devils disbelieved, teaching people magic...&quot;
-                    <p className="text-sm text-primary mt-2">— Surah Al-Baqarah (2:102)</p>
+                    &quot;{t("sihr_def_quote")}&quot;
+                    <p className="text-sm text-primary mt-2">— {t("sihr_def_quote_src")}</p>
                   </blockquote>
                   <p>
-                    The Prophet ﷺ said: &quot;Avoid the seven destructive sins.&quot; The people asked, &quot;What are
-                    they, O Messenger of Allah?&quot; He replied: &quot;Associating partners with Allah, magic...&quot;
-                    (Bukhari & Muslim)
+                    {t("sihr_def_hadith")}
                   </p>
                 </div>
               </CardContent>
@@ -297,27 +288,25 @@ export default function ResearchClientPage() {
 
             <Card className="border-2 border-primary/30 bg-card/50 backdrop-blur-sm">
               <CardContent className="p-8 space-y-6">
-                <h3 className="text-2xl font-[family-name:var(--font-cinzel)] font-bold text-primary">Types of Sihr</h3>
+                <h3 className="text-2xl font-[family-name:var(--font-cinzel)] font-bold text-primary">{t("sihr_types_title")}</h3>
                 <ul className="space-y-3 text-muted-foreground">
                   <li className="leading-relaxed">
-                    <strong className="text-foreground">Sihr of Separation:</strong> Magic to cause division between
-                    spouses, family members, or friends
+                    <strong className="text-foreground">{t("sihr_type_1_label")}</strong> {t("sihr_type_1_text")}
                   </li>
                   <li className="leading-relaxed">
-                    <strong className="text-foreground">Sihr of Love:</strong> Creating false attraction or obsession
+                    <strong className="text-foreground">{t("sihr_type_2_label")}</strong> {t("sihr_type_2_text")}
                   </li>
                   <li className="leading-relaxed">
-                    <strong className="text-foreground">Sihr of Illness:</strong> Causing physical or mental symptoms
+                    <strong className="text-foreground">{t("sihr_type_3_label")}</strong> {t("sihr_type_3_text")}
                   </li>
                   <li className="leading-relaxed">
-                    <strong className="text-foreground">Sihr of Blocking:</strong> Preventing marriage, pregnancy, or
-                    success
+                    <strong className="text-foreground">{t("sihr_type_4_label")}</strong> {t("sihr_type_4_text")}
                   </li>
                   <li className="leading-relaxed">
-                    <strong className="text-foreground">Sihr of Madness:</strong> Affecting mental stability and clarity
+                    <strong className="text-foreground">{t("sihr_type_5_label")}</strong> {t("sihr_type_5_text")}
                   </li>
                   <li className="leading-relaxed">
-                    <strong className="text-foreground">Sihr in Food/Drink:</strong> Magic consumed unknowingly
+                    <strong className="text-foreground">{t("sihr_type_6_label")}</strong> {t("sihr_type_6_text")}
                   </li>
                 </ul>
               </CardContent>
@@ -326,35 +315,34 @@ export default function ResearchClientPage() {
             <Card className="border-2 border-primary/30 bg-card/50 backdrop-blur-sm lg:col-span-2">
               <CardContent className="p-8 space-y-6">
                 <h3 className="text-2xl font-[family-name:var(--font-cinzel)] font-bold text-primary">
-                  Common Symptoms of Sihr
+                  {t("sihr_symp_title")}
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-muted-foreground">
                   <div>
-                    <p className="font-semibold text-foreground mb-3">Physical Symptoms:</p>
+                    <p className="font-semibold text-foreground mb-3">{t("sihr_symp_phys_title")}</p>
                     <ul className="space-y-2 text-sm">
-                      <li>• Unexplained pains that move around the body</li>
-                      <li>• Headaches that don&apos;t respond to medication</li>
-                      <li>• Stomach problems without medical cause</li>
-                      <li>• Extreme fatigue and lethargy</li>
-                      <li>• Tightness in chest, especially during prayer</li>
-                      <li>• Unusual dreams or nightmares</li>
+                      <li>• {t("sihr_symp_phys_l1")}</li>
+                      <li>• {t("sihr_symp_phys_l2")}</li>
+                      <li>• {t("sihr_symp_phys_l3")}</li>
+                      <li>• {t("sihr_symp_phys_l4")}</li>
+                      <li>• {t("sihr_symp_phys_l5")}</li>
+                      <li>• {t("sihr_symp_phys_l6")}</li>
                     </ul>
                   </div>
                   <div>
-                    <p className="font-semibold text-foreground mb-3">Psychological & Behavioral:</p>
+                    <p className="font-semibold text-foreground mb-3">{t("sihr_symp_psych_title")}</p>
                     <ul className="space-y-2 text-sm">
-                      <li>• Sudden personality changes</li>
-                      <li>• Unexplained anger or aggression</li>
-                      <li>• Depression and anxiety without clear cause</li>
-                      <li>• Aversion to worship (Quran, prayer, dhikr)</li>
-                      <li>• Marital problems appearing suddenly</li>
-                      <li>• Feeling of being watched or followed</li>
+                      <li>• {t("sihr_symp_psych_l1")}</li>
+                      <li>• {t("sihr_symp_psych_l2")}</li>
+                      <li>• {t("sihr_symp_psych_l3")}</li>
+                      <li>• {t("sihr_symp_psych_l4")}</li>
+                      <li>• {t("sihr_symp_psych_l5")}</li>
+                      <li>• {t("sihr_symp_psych_l6")}</li>
                     </ul>
                   </div>
                   <div className="md:col-span-2">
                     <p className="text-sm italic text-foreground/70">
-                      Note: These symptoms can also indicate medical or psychological conditions. Professional medical
-                      evaluation is essential before concluding spiritual causation.
+                      {t("sihr_symp_note")}
                     </p>
                   </div>
                 </div>
@@ -371,7 +359,7 @@ export default function ResearchClientPage() {
         <div className="max-w-4xl mx-auto space-y-8">
           <div className="text-center space-y-4">
             <h2 className="text-4xl font-[family-name:var(--font-cinzel)] font-bold text-balance">
-              The Evil Eye (Al-Ayn) - Islamic Perspective
+              {t("eye_intro_title")}
             </h2>
           </div>
 
@@ -379,79 +367,74 @@ export default function ResearchClientPage() {
             <CardContent className="p-8 lg:p-12 space-y-8">
               <div className="space-y-4">
                 <h3 className="text-2xl font-[family-name:var(--font-cinzel)] font-bold text-primary">
-                  Definition & Evidence
+                  {t("eye_def_title")}
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  The evil eye (Al-Ayn) is a genuine phenomenon recognized in Islam, where a person&apos;s
-                  admiration—whether out of envy or even unintentional—can cause harm to the one being looked at. The
-                  Prophet Muhammad ﷺ said: &quot;The evil eye is real, and if anything were to overtake the divine
-                  decree, it would be the evil eye.&quot; (Sahih Muslim)
+                  {t("eye_def_text")}
                 </p>
                 <blockquote className="border-l-4 border-primary pl-6 italic text-foreground/90 my-6">
-                  &quot;And indeed, those who disbelieve would almost make you slip with their eyes when they hear the
-                  message...&quot;
-                  <p className="text-sm text-primary mt-2">— Surah Al-Qalam (68:51)</p>
+                  &quot;{t("eye_def_quote")}&quot;
+                  <p className="text-sm text-primary mt-2">— {t("eye_def_quote_src")}</p>
                 </blockquote>
               </div>
 
               <div className="space-y-4">
-                <h3 className="text-2xl font-[family-name:var(--font-cinzel)] font-bold text-primary">How It Occurs</h3>
+                <h3 className="text-2xl font-[family-name:var(--font-cinzel)] font-bold text-primary">{t("eye_how_title")}</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  The evil eye can occur when someone looks at a blessing (health, wealth, children, success) with
-                  intense admiration without saying &quot;MashaAllah&quot; or &quot;Barakallah.&quot; It can come from:
+                  {t("eye_how_text")}
                 </p>
                 <ul className="space-y-2 text-muted-foreground ml-6">
-                  <li>• Envious individuals who wish they had what you have</li>
-                  <li>• People who admire intensely, even without bad intentions</li>
-                  <li>• Even from oneself when admiring one&apos;s own blessings without gratitude</li>
-                  <li>• Can affect adults, children, property, and even animals</li>
+                  <li>• {t("eye_how_l1")}</li>
+                  <li>• {t("eye_how_l2")}</li>
+                  <li>• {t("eye_how_l3")}</li>
+                  <li>• {t("eye_how_l4")}</li>
                 </ul>
               </div>
 
               <div className="space-y-4">
                 <h3 className="text-2xl font-[family-name:var(--font-cinzel)] font-bold text-primary">
-                  Common Symptoms
+                  {t("eye_symp_title")}
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-muted-foreground">
                   <ul className="space-y-2 text-sm">
-                    <li>• Sudden illness without medical explanation</li>
-                    <li>• Loss of appetite and weight</li>
-                    <li>• Restlessness and insomnia</li>
-                    <li>• Headaches and body pains</li>
+                    <li>• {t("eye_symp_l1")}</li>
+                    <li>• {t("eye_symp_l2")}</li>
+                    <li>• {t("eye_symp_l3")}</li>
+                    <li>• {t("eye_symp_l4")}</li>
                   </ul>
                   <ul className="space-y-2 text-sm">
-                    <li>• Sudden business or financial losses</li>
-                    <li>• Marital discord appearing suddenly</li>
-                    <li>• Loss of interest in work or activities</li>
-                    <li>• General feeling of being &quot;off&quot;</li>
+                    <li>• {t("eye_symp_l5")}</li>
+                    <li>• {t("eye_symp_l6")}</li>
+                    <li>• {t("eye_symp_l7")}</li>
+                    <li>• {t("eye_symp_l8")}</li>
                   </ul>
                 </div>
               </div>
 
               <div className="space-y-4">
                 <h3 className="text-2xl font-[family-name:var(--font-cinzel)] font-bold text-primary">
-                  Islamic Protection & Treatment
+                  {t("eye_prot_title")}
                 </h3>
                 <div className="space-y-4 text-muted-foreground">
                   <div>
-                    <p className="font-semibold text-foreground mb-3">Prevention:</p>
+                    <p className="font-semibold text-foreground mb-3">{t("eye_prev_title")}</p>
                     <ul className="space-y-2 text-sm">
-                      <li>• Regular recitation of morning and evening adhkar</li>
-                      <li>• Saying &quot;MashaAllah&quot; when admiring blessings</li>
-                      <li>• Keeping blessings private when possible</li>
-                      <li>• Regular recitation of Surah Al-Falaq and An-Nas</li>
-                      <li>• Ayat al-Kursi daily and before sleep</li>
+                      <li>• {t("eye_prev_l1")}</li>
+                      <li>• {t("eye_prev_l2")}</li>
+                      <li>• {t("eye_prev_l3")}</li>
+                      <li>• {t("eye_prev_l4")}</li>
+                      <li>• {t("eye_prev_l5")}</li>
                     </ul>
                   </div>
                   <div>
-                    <p className="font-semibold text-foreground mb-3">Treatment if Affected:</p>
+                    <p className="font-semibold text-foreground mb-3">{t("eye_treat_title")}</p>
                     <ul className="space-y-2 text-sm">
-                      <li>• Ruqyah with specific Quranic verses</li>
+                      <li>• {t("eye_treat_l1")}</li>
                       <li>
-                        • If the envious person is known, they perform wudu and the water is poured over the victim
+                        • {t("eye_treat_l2")}
                       </li>
-                      <li>• Reciting protective supplications taught by the Prophet ﷺ</li>
-                      <li>• Increasing in worship, prayer, and seeking Allah&apos;s protection</li>
+                      <li>• {t("eye_treat_l3")}</li>
+                      <li>• {t("eye_treat_l4")}</li>
                     </ul>
                   </div>
                 </div>
@@ -467,39 +450,32 @@ export default function ResearchClientPage() {
       <section ref={addToRefs} className="container mx-auto px-4 py-20 opacity-0">
         <div className="max-w-4xl mx-auto space-y-8">
           <h2 className="text-4xl font-[family-name:var(--font-cinzel)] font-bold text-center text-balance">
-            Our Research Methodology
+            {t("meth_title")}
           </h2>
 
           <Card className="border-2 border-border bg-card/50 backdrop-blur-sm">
             <CardContent className="p-8 space-y-6">
               <p className="text-muted-foreground leading-relaxed">
-                Our research approach combines classical Islamic scholarship with contemporary understanding, always
-                maintaining strict adherence to authentic sources:
+                {t("meth_desc")}
               </p>
               <ol className="space-y-4 text-muted-foreground">
                 <li className="leading-relaxed">
-                  <strong className="text-foreground">1. Primary Source Analysis:</strong> Direct study of Qur&apos;an
-                  and authentic Hadith collections regarding spiritual matters
+                  <strong className="text-foreground">1. {t("meth_l1_label")}</strong> {t("meth_l1_text")}
                 </li>
                 <li className="leading-relaxed">
-                  <strong className="text-foreground">2. Classical Scholarship:</strong> Reviewing interpretations and
-                  methodologies of renowned Islamic scholars throughout history
+                  <strong className="text-foreground">2. {t("meth_l2_label")}</strong> {t("meth_l2_text")}
                 </li>
                 <li className="leading-relaxed">
-                  <strong className="text-foreground">3. Contemporary Application:</strong> Understanding how classical
-                  knowledge applies to modern contexts and conditions
+                  <strong className="text-foreground">3. {t("meth_l3_label")}</strong> {t("meth_l3_text")}
                 </li>
                 <li className="leading-relaxed">
-                  <strong className="text-foreground">4. Medical Integration:</strong> Collaborating with medical
-                  professionals to distinguish spiritual from psychological/medical conditions
+                  <strong className="text-foreground">4. {t("meth_l4_label")}</strong> {t("meth_l4_text")}
                 </li>
                 <li className="leading-relaxed">
-                  <strong className="text-foreground">5. Case Documentation:</strong> Carefully documenting cases (with
-                  confidentiality) to build empirical understanding
+                  <strong className="text-foreground">5. {t("meth_l5_label")}</strong> {t("meth_l5_text")}
                 </li>
                 <li className="leading-relaxed">
-                  <strong className="text-foreground">6. Peer Review:</strong> All research is reviewed by qualified
-                  Islamic scholars before publication
+                  <strong className="text-foreground">6. {t("meth_l6_label")}</strong> {t("meth_l6_text")}
                 </li>
               </ol>
             </CardContent>

@@ -23,8 +23,12 @@ import {
   ChevronRight,
   CheckCircle,
 } from "lucide-react"
+import { ORG_CONFIG } from "@/lib/constants"
+import { useLanguage } from "@/context/LanguageContext"
+
 
 export function ServicesClientPage() {
+  const { t, dir } = useLanguage()
   const sectionsRef = useRef<HTMLElement[]>([])
 
   useEffect(() => {
@@ -68,20 +72,21 @@ export function ServicesClientPage() {
         </div>
         <div className="relative max-w-4xl mx-auto text-center space-y-6">
           <h1 className="text-5xl md:text-6xl font-[family-name:var(--font-cinzel)] font-bold text-balance animate-fade-in-up">
-            Our <span className="text-primary">Services</span>
+            {t("services_title")}
           </h1>
           <p className="text-xl text-muted-foreground animate-fade-in-up [animation-delay:200ms] opacity-0 [animation-fill-mode:forwards]">
-            Comprehensive Islamic spiritual care rooted in Qur&apos;an and Sunnah
+            {t("services_subtitle")}
           </p>
         </div>
       </section>
+
 
       <SectionDivider />
 
       {/* Core Services */}
       <section ref={addToRefs} className="container mx-auto px-4 py-20 opacity-0">
         <h2 className="text-4xl md:text-5xl font-[family-name:var(--font-cinzel)] font-bold text-center text-balance mb-16">
-          Core Services
+          {t("core_services")}
         </h2>
 
         <div className="space-y-12">
@@ -101,21 +106,18 @@ export function ServicesClientPage() {
                   <Shield className="h-8 w-8 text-primary" />
                 </div>
                 <h3 className="text-3xl font-[family-name:var(--font-cinzel)] font-bold">
-                  Spiritual Assessment & Diagnosis
+                  {t("service_assessment_detailed")}
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Our comprehensive assessment service helps identify whether symptoms are spiritual, psychological, or
-                  medical in nature. We conduct detailed consultations reviewing medical history, current symptoms, and
-                  spiritual practices. Through diagnostic Ruqyah and careful observation, we determine the appropriate
-                  course of action.
+                  {t("service_assessment_detailed_desc")}
                 </p>
                 <ul className="space-y-3">
                   {[
-                    "Detailed consultation (60-90 minutes)",
-                    "Medical and psychological history review",
-                    "Diagnostic Ruqyah session",
-                    "Comprehensive written assessment report",
-                    "Personalized treatment recommendations",
+                    t("assessment_item_1"),
+                    t("assessment_item_2"),
+                    t("assessment_item_3"),
+                    t("assessment_item_4"),
+                    t("assessment_item_5"),
                   ].map((item, index) => (
                     <li key={index} className="flex items-start gap-3">
                       <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
@@ -142,20 +144,18 @@ export function ServicesClientPage() {
                 <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
                   <BookOpen className="h-8 w-8 text-primary" />
                 </div>
-                <h3 className="text-3xl font-[family-name:var(--font-cinzel)] font-bold">Ruqyah Treatment Sessions</h3>
+                <h3 className="text-3xl font-[family-name:var(--font-cinzel)] font-bold">{t("service_ruqyah_detailed")}</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Authentic Islamic spiritual healing through recitation of Qur&apos;an and prophetic supplications. Our
-                  Ruqyah sessions are conducted by trained practitioners who strictly adhere to Islamic guidelines,
-                  avoiding all innovations and forbidden practices.
+                  {t("service_ruqyah_detailed_desc")}
                 </p>
                 <ul className="space-y-3">
                   {[
-                    "In-person Ruqyah sessions (45-60 minutes)",
-                    "Recitation of selected Quranic verses",
-                    "Prophetic supplications and prayers",
-                    "Self-Ruqyah training and guidance",
-                    "Customized audio recordings for home use",
-                    "Follow-up progress monitoring",
+                    t("ruqyah_item_1"),
+                    t("ruqyah_item_2"),
+                    t("ruqyah_item_3"),
+                    t("ruqyah_item_4"),
+                    t("ruqyah_item_5"),
+                    t("ruqyah_item_6"),
                   ].map((item, index) => (
                     <li key={index} className="flex items-start gap-3">
                       <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
@@ -183,21 +183,19 @@ export function ServicesClientPage() {
                   <Users className="h-8 w-8 text-primary" />
                 </div>
                 <h3 className="text-3xl font-[family-name:var(--font-cinzel)] font-bold">
-                  Family Support & Counseling
+                  {t("service_family_detailed")}
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Dealing with spiritual afflictions affects entire families. We provide counseling and support for
-                  family members, helping them understand the condition, maintain patience, support their loved ones,
-                  and protect themselves spiritually.
+                  {t("service_family_detailed_desc")}
                 </p>
                 <ul className="space-y-3">
                   {[
-                    "Family education sessions",
-                    "Coping strategies and emotional support",
-                    "Islamic guidance on patience and trust in Allah",
-                    "Home environment spiritual protection advice",
-                    "Communication strategies",
-                    "Support group referrals",
+                    t("family_item_1"),
+                    t("family_item_2"),
+                    t("family_item_3"),
+                    t("family_item_4"),
+                    t("family_item_5"),
+                    t("family_item_6"),
                   ].map((item, index) => (
                     <li key={index} className="flex items-start gap-3">
                       <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
@@ -218,11 +216,10 @@ export function ServicesClientPage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16 space-y-4">
             <h2 className="text-4xl md:text-5xl font-[family-name:var(--font-cinzel)] font-bold text-balance">
-              Paranormal Investigation & Site Analysis
+              {t("paranormal_investigation_title")}
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Professional Islamic paranormal investigation services for homes, businesses, and locations experiencing
-              unexplained phenomena
+              {t("paranormal_investigation_desc")}
             </p>
           </div>
 
@@ -232,19 +229,18 @@ export function ServicesClientPage() {
                 <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
                   <Shield className="h-8 w-8 text-primary" />
                 </div>
-                <h3 className="text-2xl font-[family-name:var(--font-cinzel)] font-bold">Residential Investigation</h3>
+                <h3 className="text-2xl font-[family-name:var(--font-cinzel)] font-bold">{t("residential_investigation")}</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Comprehensive investigation of homes and residential properties experiencing paranormal activity,
-                  including unexplained sounds, movements, negative energy, or Jinn presence.
+                  {t("residential_investigation_desc")}
                 </p>
                 <ul className="space-y-3">
                   {[
-                    "On-site assessment and evaluation (2-4 hours)",
-                    "Islamic environmental analysis",
-                    "Detection of spiritual anomalies",
-                    "Detailed written investigation report",
-                    "Home cleansing and protection protocols",
-                    "Follow-up support for 30 days",
+                    t("res_investigation_item_1"),
+                    t("res_investigation_item_2"),
+                    t("res_investigation_item_3"),
+                    t("res_investigation_item_4"),
+                    t("res_investigation_item_5"),
+                    t("res_investigation_item_6"),
                   ].map((item, index) => (
                     <li key={index} className="flex items-start gap-3">
                       <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
@@ -261,20 +257,19 @@ export function ServicesClientPage() {
                   <BookOpen className="h-8 w-8 text-primary" />
                 </div>
                 <h3 className="text-2xl font-[family-name:var(--font-cinzel)] font-bold">
-                  Commercial Site Investigation
+                  {t("commercial_investigation")}
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Professional investigation services for businesses, offices, and commercial properties affected by
-                  spiritual disturbances impacting operations and employee wellbeing.
+                  {t("commercial_investigation_desc")}
                 </p>
                 <ul className="space-y-3">
                   {[
-                    "After-hours site investigation (4-6 hours)",
-                    "Energy mapping and analysis",
-                    "Employee interview and documentation",
-                    "Comprehensive investigation report with photos",
-                    "Business-specific spiritual protection plan",
-                    "Discreet and professional service",
+                    t("com_investigation_item_1"),
+                    t("com_investigation_item_2"),
+                    t("com_investigation_item_3"),
+                    t("com_investigation_item_4"),
+                    t("com_investigation_item_5"),
+                    t("com_investigation_item_6"),
                   ].map((item, index) => (
                     <li key={index} className="flex items-start gap-3">
                       <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
@@ -296,27 +291,23 @@ export function ServicesClientPage() {
                 {[
                   {
                     step: "1",
-                    title: "Initial Consultation",
-                    description:
-                      "Phone or video interview to understand the situation, gather history, and determine if investigation is needed.",
+                    title: t("inv_step_1_title"),
+                    description: t("inv_step_1_desc"),
                   },
                   {
                     step: "2",
-                    title: "Site Assessment",
-                    description:
-                      "On-location evaluation using Islamic methodology, environmental analysis, and documentation of phenomena.",
+                    title: t("inv_step_2_title"),
+                    description: t("inv_step_2_desc"),
                   },
                   {
                     step: "3",
-                    title: "Analysis & Report",
-                    description:
-                      "Comprehensive analysis of findings, Islamic perspective on the situation, and detailed written report.",
+                    title: t("inv_step_3_title"),
+                    description: t("inv_step_3_desc"),
                   },
                   {
                     step: "4",
-                    title: "Solution Implementation",
-                    description:
-                      "Ruqyah treatment, spiritual cleansing, protection protocols, and ongoing support until resolved.",
+                    title: t("inv_step_4_title"),
+                    description: t("inv_step_4_desc"),
                   },
                 ].map((item, index) => (
                   <div
@@ -337,37 +328,33 @@ export function ServicesClientPage() {
 
               <div className="space-y-6 mt-12 pt-12 border-t border-border/50">
                 <h4 className="text-2xl font-[family-name:var(--font-cinzel)] font-bold text-center">
-                  Why Hire Our Investigation Team?
+                  {t("why_hire_title")}
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {[
                     {
-                      title: "Islamic Methodology",
-                      description:
-                        "All investigations conducted according to Qur'an and Sunnah, avoiding innovations and superstitions.",
+                      title: t("why_item_1_title"),
+                      description: t("why_item_1_desc"),
                     },
                     {
-                      title: "Experienced Researchers",
-                      description:
-                        "Team of trained Islamic scholars and paranormal researchers with years of field experience.",
+                      title: t("why_item_2_title"),
+                      description: t("why_item_2_desc"),
                     },
                     {
-                      title: "Confidential Service",
-                      description: "Complete discretion guaranteed. Your privacy and dignity are our top priorities.",
+                      title: t("why_item_3_title"),
+                      description: t("why_item_3_desc"),
                     },
                     {
-                      title: "Comprehensive Solutions",
-                      description:
-                        "Not just investigation - we provide complete spiritual healing and protection solutions.",
+                      title: t("why_item_4_title"),
+                      description: t("why_item_4_desc"),
                     },
                     {
-                      title: "24/7 Emergency Response",
-                      description: "Available for urgent cases requiring immediate investigation and intervention.",
+                      title: t("why_item_5_title"),
+                      description: t("why_item_5_desc"),
                     },
                     {
-                      title: "Proven Track Record",
-                      description:
-                        "Successfully resolved hundreds of cases. View our case studies for detailed examples.",
+                      title: t("why_item_6_title"),
+                      description: t("why_item_6_desc"),
                     },
                   ].map((item, index) => (
                     <div
@@ -402,35 +389,32 @@ export function ServicesClientPage() {
       {/* Service Formats */}
       <section ref={addToRefs} className="container mx-auto px-4 py-20 opacity-0">
         <h2 className="text-4xl md:text-5xl font-[family-name:var(--font-cinzel)] font-bold text-center text-balance mb-16">
-          Service Formats
+          {t("service_formats_title")}
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
             {
               icon: Home,
-              title: "In-Person Sessions",
-              description:
-                "Face-to-face consultations and Ruqyah sessions at our center, providing the most comprehensive and effective treatment experience.",
-              features: ["Private consultation rooms", "Professional environment", "Full diagnostic capabilities"],
+              title: t("format_inperson_title"),
+              description: t("format_inperson_desc"),
+              features: [t("format_inperson_f1"), t("format_inperson_f2"), t("format_inperson_f3")],
             },
             {
               icon: Video,
-              title: "Online Consultations",
-              description:
-                "Virtual consultations via secure video conferencing for initial assessments, follow-ups, and guidance when in-person visits are not possible.",
-              features: ["Secure video platform", "Flexible scheduling", "Convenient for remote clients"],
+              title: t("format_online_title"),
+              description: t("format_online_desc"),
+              features: [t("format_online_f1"), t("format_online_f2"), t("format_online_f3")],
             },
             {
               icon: Phone,
-              title: "Emergency Support",
-              description:
-                "24/7 helpline for urgent spiritual concerns, providing immediate guidance and connecting you with appropriate resources during crisis situations.",
-              features: ["24/7 availability", "Immediate guidance", "Crisis intervention"],
+              title: t("format_emergency_title"),
+              description: t("format_emergency_desc"),
+              features: [t("format_emergency_f1"), t("format_emergency_f2"), t("format_emergency_f3")],
             },
           ].map((format, index) => (
             <Card
-              key={format.title}
+              key={index}
               className="group border-2 border-border hover:border-primary/50 bg-card/30 backdrop-blur-sm transition-all duration-500 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-3"
               style={{
                 animationDelay: `${index * 150}ms`,
@@ -462,38 +446,34 @@ export function ServicesClientPage() {
       {/* Additional Services */}
       <section ref={addToRefs} className="container mx-auto px-4 py-20 opacity-0">
         <h2 className="text-4xl md:text-5xl font-[family-name:var(--font-cinzel)] font-bold text-center text-balance mb-16">
-          Additional Services
+          {t("additional_services_title")}
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {[
             {
               icon: GraduationCap,
-              title: "Islamic Education Programs",
-              description:
-                "Comprehensive courses on spiritual protection, understanding the unseen world from an Islamic perspective, and practical application of daily adhkar and protective supplications.",
+              title: t("add_service_education_title"),
+              description: t("add_service_education_desc"),
             },
             {
               icon: HeartHandshake,
-              title: "Community Workshops",
-              description:
-                "Regular workshops and seminars for the Muslim community covering topics like evil eye protection, recognizing spiritual afflictions, and dispelling cultural superstitions.",
+              title: t("add_service_workshops_title"),
+              description: t("add_service_workshops_desc"),
             },
             {
               icon: FileText,
-              title: "Written Consultations",
-              description:
-                "Detailed written advice for specific situations, including review of symptoms, Islamic perspective on your case, and personalized recommendations for spiritual protection and healing.",
+              title: t("add_service_consultations_title"),
+              description: t("add_service_consultations_desc"),
             },
             {
               icon: BookOpen,
-              title: "Ruqyah Practitioner Training",
-              description:
-                "Training programs for those who wish to learn proper Ruqyah methodology according to Qur'an and Sunnah, with certification upon completion and ongoing mentorship.",
+              title: t("add_service_training_title"),
+              description: t("add_service_training_desc"),
             },
           ].map((service, index) => (
             <Card
-              key={service.title}
+              key={index}
               className="group border-2 border-border hover:border-primary/50 bg-card/30 backdrop-blur-sm transition-all duration-500 hover:shadow-lg hover:shadow-primary/20 hover:translate-x-2"
               style={{
                 animationDelay: `${index * 100}ms`,
@@ -517,53 +497,44 @@ export function ServicesClientPage() {
       <section ref={addToRefs} className="container mx-auto px-4 py-20 opacity-0">
         <div className="max-w-4xl mx-auto space-y-8">
           <h2 className="text-4xl font-[family-name:var(--font-cinzel)] font-bold text-center text-balance">
-            What to Expect
+            {t("expect_title")}
           </h2>
 
           <Card className="border-2 border-primary/30 bg-card/50 backdrop-blur-sm">
             <CardContent className="p-8 lg:p-12 space-y-8">
               <div className="space-y-4">
                 <h3 className="text-2xl font-[family-name:var(--font-cinzel)] font-bold text-primary">
-                  Before Your First Session
+                  {t("expect_before_title")}
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  You&apos;ll complete a confidential intake form covering your medical history, current symptoms, and
-                  spiritual practices. We recommend being in a state of wudu (ablution) and wearing modest, comfortable
-                  clothing. Bring any relevant medical records or previous assessments.
+                  {t("expect_before_desc")}
                 </p>
               </div>
 
               <div className="space-y-4">
                 <h3 className="text-2xl font-[family-name:var(--font-cinzel)] font-bold text-primary">
-                  During the Session
+                  {t("expect_during_title")}
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Sessions are conducted in a private, comfortable environment with appropriate gender considerations
-                  (mahram requirements observed). We explain each step, answer your questions, and ensure you feel safe
-                  and informed throughout the process. Sessions are conducted with respect, professionalism, and Islamic
-                  etiquette.
+                  {t("expect_during_desc")}
                 </p>
               </div>
 
               <div className="space-y-4">
                 <h3 className="text-2xl font-[family-name:var(--font-cinzel)] font-bold text-primary">
-                  After the Session
+                  {t("expect_after_title")}
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  You&apos;ll receive a personalized care plan including self-Ruqyah instructions, recommended
-                  supplications, lifestyle guidance, and follow-up schedule. We provide ongoing support via phone or
-                  email between sessions and adjust treatment plans based on your progress.
+                  {t("expect_after_desc")}
                 </p>
               </div>
 
               <div className="space-y-4">
                 <h3 className="text-2xl font-[family-name:var(--font-cinzel)] font-bold text-primary">
-                  Confidentiality & Ethics
+                  {t("expect_ethics_title")}
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  All information shared is strictly confidential. We maintain professional boundaries, never exploit
-                  vulnerable individuals, and follow Islamic ethical guidelines. We do not charge for Ruqyah itself (as
-                  it is an act of worship), though administrative and facility costs may apply.
+                  {t("expect_ethics_desc")}
                 </p>
               </div>
             </CardContent>
@@ -580,11 +551,10 @@ export function ServicesClientPage() {
 
           <CardContent className="relative z-10 p-12 text-center space-y-6">
             <h2 className="text-3xl md:text-4xl font-[family-name:var(--font-cinzel)] font-bold text-balance">
-              Ready to Begin Your Healing Journey?
+              {t("cta_ready_title")}
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Contact us today to schedule your consultation. We&apos;re here to help you with compassion, knowledge,
-              and authentic Islamic guidance.
+              {t("cta_ready_desc")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <Button
@@ -593,8 +563,8 @@ export function ServicesClientPage() {
                 className="group bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-primary/50 transition-all duration-300 hover:scale-105"
               >
                 <Link href="/contact">
-                  Schedule Consultation
-                  <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  {t("cta_schedule")}
+                  <ChevronRight className={`ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform ${dir === 'rtl' ? 'rotate-180' : ''}`} />
                 </Link>
               </Button>
               <Button
@@ -603,7 +573,7 @@ export function ServicesClientPage() {
                 variant="outline"
                 className="border-2 border-primary/50 hover:border-primary hover:bg-primary/10 transition-all duration-300 hover:scale-105 bg-transparent"
               >
-                <Link href="/resources">View Resources</Link>
+                <Link href="/resources">{t("cta_view_resources")}</Link>
               </Button>
             </div>
           </CardContent>

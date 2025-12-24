@@ -5,10 +5,13 @@ import { useState, useEffect } from "react"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ORG_CONFIG } from "@/lib/constants"
+import { LanguageSwitcher } from "./language-switcher"
+import { useLanguage } from "@/context/LanguageContext"
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const { t } = useLanguage()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,20 +22,20 @@ export function Navbar() {
   }, [])
 
   const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/services", label: "Services" },
-    { href: "/cases", label: "Cases" },
-    { href: "/research", label: "Research" },
-    { href: "/resources", label: "Resources" },
-    { href: "/contact", label: "Contact" },
+    { href: "/", label: t("home") },
+    { href: "/about", label: t("about") },
+    { href: "/services", label: t("services") },
+    { href: "/cases", label: t("cases") },
+    { href: "/research", label: t("research_nav") },
+    { href: "/resources", label: t("resources") },
+    { href: "/contact", label: t("contact") },
   ]
+
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? "bg-background/95 backdrop-blur-md shadow-lg shadow-primary/5" : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? "bg-background/95 backdrop-blur-md shadow-lg shadow-primary/5" : "bg-transparent"
+        }`}
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
@@ -41,7 +44,7 @@ export function Navbar() {
             href="/"
             className="text-xl font-[family-name:var(--font-cinzel)] font-bold text-primary hover:text-accent transition-colors duration-300"
           >
-            {ORG_CONFIG.name.split(" ")[0]}
+            {ORG_CONFIG.name}
           </Link>
 
           {/* Desktop Navigation */}
@@ -56,17 +59,21 @@ export function Navbar() {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
               </Link>
             ))}
+            <LanguageSwitcher />
           </div>
 
-          {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden text-primary"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X /> : <Menu />}
-          </Button>
+          {/* Mobile Menu Button - Added Switcher here too for convenience */}
+          <div className="flex items-center gap-2 md:hidden">
+            <LanguageSwitcher />
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-primary"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X /> : <Menu />}
+            </Button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
@@ -88,3 +95,4 @@ export function Navbar() {
     </nav>
   )
 }
+

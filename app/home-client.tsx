@@ -12,10 +12,14 @@ import { WhatsAppButton } from "@/components/whatsapp-button"
 import { SectionDivider } from "@/components/section-divider"
 import { Shield, BookOpen, Heart, ChevronRight, Moon, Users, Award } from "lucide-react"
 import { ORG_CONFIG } from "@/lib/constants"
+import { useLanguage } from "@/context/LanguageContext"
+
 
 export default function HomeClient() {
   const heroRef = useRef<HTMLDivElement>(null)
   const sectionsRef = useRef<HTMLElement[]>([])
+  const { t, dir } = useLanguage()
+
 
   useEffect(() => {
     const structuredData = {
@@ -113,10 +117,11 @@ export default function HomeClient() {
           <div className="max-w-4xl mx-auto space-y-8">
             {/* Heading - staggered animation */}
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-[family-name:var(--font-cinzel)] font-bold text-balance animate-fade-in-up [animation-delay:200ms] opacity-0 [animation-fill-mode:forwards]">
-              Understanding the <span className="text-primary">Unseen</span>
-              <br />
-              Through Qur&apos;an & Sunnah
+              {t("hero_title").split(t("hero_unseen"))[0]}
+              <span className="text-primary">{t("hero_unseen")}</span>
+              {t("hero_title").split(t("hero_unseen"))[1]}
             </h1>
+
 
             {/* Subtitle */}
             <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground text-pretty animate-fade-in-up [animation-delay:400ms] opacity-0 [animation-fill-mode:forwards]">
@@ -136,9 +141,10 @@ export default function HomeClient() {
                 className="group bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-primary/50 transition-all duration-300 hover:scale-105"
               >
                 <Link href="/contact">
-                  Request Help
-                  <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  {t("request_help")}
+                  <ChevronRight className={`ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform ${dir === 'rtl' ? 'rotate-180' : ''}`} />
                 </Link>
+
               </Button>
               <Button
                 asChild
@@ -147,9 +153,10 @@ export default function HomeClient() {
                 className="group border-2 border-primary/50 hover:border-primary hover:bg-primary/10 transition-all duration-300 hover:scale-105 bg-transparent"
               >
                 <Link href="/about">
-                  Learn More
-                  <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  {t("learn_more")}
+                  <ChevronRight className={`ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform ${dir === 'rtl' ? 'rotate-180' : ''}`} />
                 </Link>
+
               </Button>
             </div>
           </div>
@@ -168,27 +175,29 @@ export default function HomeClient() {
       {/* Core Values Section */}
       <section ref={addToRefs} className="container mx-auto px-4 py-20 opacity-0">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-[family-name:var(--font-cinzel)] font-bold text-center text-balance mb-16">
-          Our Foundation
+          {t("our_foundation")}
         </h2>
+
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
             {
               icon: Shield,
-              title: "Protection",
-              description: "Safeguarding believers through authentic Islamic teachings and verified Ruqyah practices.",
+              title: t("service_assessment"),
+              description: t("service_assessment_desc"),
             },
             {
               icon: BookOpen,
-              title: "Research",
-              description: "Deep study of Islamic texts on Jinn, Sihr, and spiritual matters with scholarly rigor.",
+              title: t("service_ruqyah"),
+              description: t("service_ruqyah_desc"),
             },
             {
               icon: Heart,
-              title: "Healing",
-              description: "Compassionate spiritual care rooted in Qur'an and Sunnah, with medical awareness.",
+              title: t("healing"),
+              description: t("healing_desc"),
             },
           ].map((item, index) => (
+
             <Card
               key={item.title}
               className="group relative overflow-hidden border-2 border-border hover:border-primary/50 bg-card/50 backdrop-blur-sm transition-all duration-500 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-2"
@@ -214,36 +223,38 @@ export default function HomeClient() {
 
       <section ref={addToRefs} className="container mx-auto px-4 py-20 opacity-0">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-[family-name:var(--font-cinzel)] font-bold text-center text-balance mb-16">
-          Our Services
+          {t("our_services")}
         </h2>
+
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {[
             {
               icon: Moon,
-              title: "Spiritual Assessment",
-              description: "Professional diagnosis of spiritual afflictions",
+              title: t("service_assessment"),
+              description: t("service_assessment_desc"),
               image: "/islamic-prayer-beads-tasbih-on-dark-background-wit.jpg",
             },
             {
               icon: BookOpen,
-              title: "Ruqyah Sessions",
-              description: "Authentic Quranic healing treatments",
+              title: t("service_ruqyah"),
+              description: t("service_ruqyah_desc"),
               image: "/open-quran-with-islamic-calligraphy-soft-light-spi.jpg",
             },
             {
               icon: Users,
-              title: "Family Support",
-              description: "Counseling for affected families",
+              title: t("service_family"),
+              description: t("service_family_desc"),
               image: "/muslim-family-praying-together-peaceful-islamic-en.jpg",
             },
             {
               icon: Award,
-              title: "Islamic Education",
-              description: "Training in spiritual protection",
+              title: t("service_education"),
+              description: t("service_education_desc"),
               image: "/islamic-books-and-manuscripts-with-arabic-calligra.jpg",
             },
           ].map((service, index) => (
+
             <Card
               key={service.title}
               className="group relative overflow-hidden border-2 border-border hover:border-primary/50 bg-card/30 backdrop-blur-sm transition-all duration-500 hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-3"
@@ -279,9 +290,10 @@ export default function HomeClient() {
             className="group bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-primary/50 transition-all duration-300 hover:scale-105"
           >
             <Link href="/services">
-              View All Services
-              <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              {t("view_all_services")}
+              <ChevronRight className={`ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform ${dir === 'rtl' ? 'rotate-180' : ''}`} />
             </Link>
+
           </Button>
         </div>
       </section>
@@ -291,11 +303,12 @@ export default function HomeClient() {
       <section ref={addToRefs} className="container mx-auto px-4 py-20 opacity-0">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {[
-            { value: "500+", label: "Cases Handled" },
-            { value: "15+", label: "Years Experience" },
-            { value: "98%", label: "Recovery Rate" },
-            { value: "24/7", label: "Support Available" },
+            { value: "500+", label: t("cases_handled") },
+            { value: "15+", label: t("years_experience") },
+            { value: "98%", label: t("recovery_rate") },
+            { value: "24/7", label: t("support_available") },
           ].map((stat, index) => (
+
             <Card
               key={stat.label}
               className="group border-2 border-border hover:border-primary/50 bg-card/30 backdrop-blur-sm transition-all duration-500 hover:shadow-lg hover:shadow-primary/20 hover:scale-105"
@@ -319,22 +332,24 @@ export default function HomeClient() {
       <section ref={addToRefs} className="container mx-auto px-4 py-20 opacity-0">
         <div className="max-w-3xl mx-auto text-center space-y-6">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-[family-name:var(--font-cinzel)] font-bold text-balance">
-            Grounded in Faith
+            {t("grounded_in_faith")}
           </h2>
+
           <div className="space-y-4 text-base md:text-lg text-muted-foreground leading-relaxed">
             <p>
-              Our work is based entirely on the Qur&apos;an and authentic Sunnah, free from cultural superstitions and
-              innovations.
+              {t("faith_desc_1")}
             </p>
+
             <p>
-              We distinguish between genuine spiritual afflictions and psychological conditions, working alongside
-              medical professionals when needed.
+              {t("faith_desc_2")}
             </p>
+
             <blockquote className="border-l-4 border-primary pl-4 md:pl-6 italic text-foreground/80 my-8">
-              &quot;And We send down of the Qur&apos;an that which is healing and mercy for the believers...&quot;
+              {t("faith_quote")}
               <br />
-              <span className="text-sm text-primary">— Surah Al-Isra (17:82)</span>
+              <span className="text-sm text-primary">{t("faith_surah")}</span>
             </blockquote>
+
           </div>
         </div>
       </section>
@@ -347,12 +362,13 @@ export default function HomeClient() {
 
           <CardContent className="relative z-10 p-8 md:p-12 text-center space-y-6">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-[family-name:var(--font-cinzel)] font-bold text-balance">
-              Need Spiritual Guidance or Help?
+              {t("need_guidance")}
             </h2>
+
             <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              We offer confidential consultations, authentic Ruqyah services, and educational resources based on Islamic
-              teachings.
+              {t("guidance_desc")}
             </p>
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <Button
                 asChild
@@ -360,9 +376,10 @@ export default function HomeClient() {
                 className="group bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-primary/50 transition-all duration-300 hover:scale-105"
               >
                 <Link href="/contact">
-                  Contact Us
-                  <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  {t("contact_us")}
+                  <ChevronRight className={`ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform ${dir === 'rtl' ? 'rotate-180' : ''}`} />
                 </Link>
+
               </Button>
               <Button
                 asChild
@@ -370,7 +387,8 @@ export default function HomeClient() {
                 variant="outline"
                 className="border-2 border-primary/50 hover:border-primary hover:bg-primary/10 transition-all duration-300 hover:scale-105 bg-transparent"
               >
-                <Link href="/research">Explore Research</Link>
+                <Link href="/research">{t("explore_research")}</Link>
+
               </Button>
             </div>
           </CardContent>

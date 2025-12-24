@@ -8,10 +8,13 @@ import { Footer } from "@/components/footer"
 import { ScrollToTop } from "@/components/scroll-to-top"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { SectionDivider } from "@/components/section-divider"
-import { CheckCircle, Users, Globe, BookMarked, GraduationCap, Heart } from "lucide-react"
+import { Shield, Target, Eye, Users, Heart, Star, Anchor, CheckCircle, Globe, BookMarked, GraduationCap } from "lucide-react"
 import { ORG_CONFIG } from "@/lib/constants"
+import { useLanguage } from "@/context/LanguageContext"
+
 
 export default function AboutPageClient() {
+  const { t } = useLanguage()
   const sectionsRef = useRef<HTMLElement[]>([])
 
   useEffect(() => {
@@ -55,13 +58,14 @@ export default function AboutPageClient() {
         </div>
         <div className="relative max-w-4xl mx-auto text-center space-y-6">
           <h1 className="text-5xl md:text-6xl font-[family-name:var(--font-cinzel)] font-bold text-balance animate-fade-in-up">
-            About <span className="text-primary">{ORG_CONFIG.name}</span>
+            {t("about_title")} <span className="text-primary">{ORG_CONFIG.name}</span>
           </h1>
           <p className="text-xl text-muted-foreground animate-fade-in-up [animation-delay:200ms] opacity-0 [animation-fill-mode:forwards]">
-            {ORG_CONFIG.tagline}
+            {t("about_subtitle")}
           </p>
         </div>
       </section>
+
 
       <SectionDivider />
 
@@ -78,25 +82,17 @@ export default function AboutPageClient() {
           </div>
           <div className="space-y-6">
             <h2 className="text-4xl font-[family-name:var(--font-cinzel)] font-bold text-balance">
-              Our Mission & Vision
+              {t("vision_mission_title")}
             </h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
-                We are dedicated to providing authentic Islamic knowledge and services related to spiritual protection,
-                paranormal phenomena, and Ruqyah healing. Our organization was founded on the principle that all
-                spiritual matters must be understood and addressed through the lens of Qur'an and authentic Sunnah.
+                {t("vision_mission_desc_1")}
               </p>
               <p>
-                Our organization bridges the gap between traditional Islamic scholarship and contemporary understanding
-                of spiritual afflictions, always maintaining strict adherence to Qur&apos;an and Sunnah. We believe that
-                the unseen world, including Jinn and spiritual afflictions, is a reality acknowledged in Islam, but must
-                be approached with knowledge, wisdom, and faith—never with superstition or innovation.
+                {t("vision_mission_desc_2")}
               </p>
               <p>
-                We work closely with Islamic scholars, medical professionals, and psychologists to provide holistic care
-                that addresses both spiritual and physical dimensions of wellbeing. Our approach is evidence-based,
-                rooted in scripture, and informed by years of practical experience in dealing with various forms of
-                spiritual afflictions.
+                {t("vision_mission_desc_3")}
               </p>
             </div>
           </div>
@@ -107,63 +103,54 @@ export default function AboutPageClient() {
 
       <section ref={addToRefs} className="container mx-auto px-4 py-20 opacity-0">
         <h2 className="text-4xl font-[family-name:var(--font-cinzel)] font-bold text-center text-balance mb-16">
-          What We Do
+          {t("what_we_do")}
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {[
             {
               icon: Users,
-              title: "Direct Spiritual Care",
-              description:
-                "We provide one-on-one consultations and Ruqyah sessions for individuals suffering from spiritual afflictions including evil eye, black magic, and Jinn possession. Each case is assessed individually with care and confidentiality.",
+              title: t("direct_care"),
+              description: t("direct_care_desc"),
             },
             {
               icon: BookMarked,
-              title: "Islamic Research",
-              description:
-                "We conduct extensive research into Islamic texts regarding the unseen world, compiling authentic hadiths, scholarly opinions, and practical applications. Our research is peer-reviewed by qualified Islamic scholars.",
+              title: t("islamic_research"),
+              description: t("islamic_research_desc"),
             },
             {
               icon: GraduationCap,
-              title: "Education & Training",
-              description:
-                "We offer educational programs teaching Muslims how to protect themselves spiritually through daily adhkar, understanding the reality of Jinn, and recognizing genuine spiritual afflictions versus psychological conditions.",
+              title: t("edu_training"),
+              description: t("edu_training_desc"),
             },
             {
               icon: Heart,
-              title: "Family Support",
-              description:
-                "We provide counseling and support for families dealing with spiritual afflictions, helping them understand the condition, maintain patience, and support their loved ones through recovery with Islamic guidance.",
+              title: t("family_support_about"),
+              description: t("family_support_about_desc"),
             },
             {
               icon: Globe,
-              title: "Community Outreach",
-              description:
-                "We organize lectures, workshops, and seminars to educate the Muslim community about authentic Islamic practices regarding spiritual protection, dispelling myths and cultural superstitions.",
+              title: t("community_outreach_about"),
+              description: t("community_outreach_about_desc"),
             },
             {
               icon: CheckCircle,
-              title: "Verification Services",
-              description:
-                "We help people distinguish between genuine spiritual issues and psychological conditions, working with medical professionals to ensure individuals receive appropriate care—whether spiritual, medical, or both.",
+              title: t("professional_ethics"),
+              description: t("professional_ethics_desc"),
             },
           ].map((item, index) => (
-            <Card
-              key={item.title}
-              className="group border-2 border-border hover:border-primary/50 bg-card/30 backdrop-blur-sm transition-all duration-500 hover:shadow-lg hover:shadow-primary/20"
-              style={{
-                animationDelay: `${index * 100}ms`,
-              }}
-            >
-              <CardContent className="p-6 space-y-4">
-                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300 group-hover:scale-110 transform">
-                  <item.icon className="h-7 w-7 text-primary" />
+            <Card key={index} className="group border-2 border-border hover:border-primary/50 bg-card/30 backdrop-blur-sm transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 overflow-hidden">
+              <CardContent className="p-8 space-y-4">
+                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:text-background transition-colors duration-500 text-primary">
+                  <item.icon className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-[family-name:var(--font-cinzel)] font-bold">{item.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{item.description}</p>
+                <h3 className="text-xl font-[family-name:var(--font-cinzel)] font-bold text-balance">
+                  {item.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed text-sm">
+                  {item.description}
+                </p>
               </CardContent>
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </Card>
           ))}
         </div>
@@ -174,44 +161,38 @@ export default function AboutPageClient() {
       {/* Islamic Principles */}
       <section ref={addToRefs} className="container mx-auto px-4 py-20 opacity-0">
         <h2 className="text-4xl font-[family-name:var(--font-cinzel)] font-bold text-center text-balance mb-12">
-          Our Islamic Principles
+          {t("principles_title")}
         </h2>
 
         <div className="max-w-4xl mx-auto space-y-6">
           {[
             {
-              title: "Qur'an and Sunnah Only",
-              description:
-                "All our practices are derived exclusively from authentic Islamic sources, with no innovations or cultural superstitions. We follow the methodology of the righteous predecessors (Salaf) in understanding and applying Islamic teachings. Every practice we employ has direct evidence from Qur'an or authentic hadith.",
+              title: t("principle_1_title"),
+              description: t("principle_1_desc"),
             },
             {
-              title: "No Shirk or Forbidden Practices",
-              description:
-                "We strictly avoid all forms of shirk (associating partners with Allah), magic, fortune-telling, astrology, and any prohibited methods. Our work is purely seeking Allah's protection and healing through His words. We never use talismans, amulets with unclear text, or any practices that contradict Tawheed.",
+              title: t("principle_2_title"),
+              description: t("principle_2_desc"),
             },
             {
-              title: "Medical Awareness & Integration",
-              description:
-                "We recognize the distinction between spiritual afflictions and psychological/medical conditions. We work collaboratively with qualified medical professionals, psychiatrists, and psychologists. We never tell patients to stop prescribed medication, and we encourage comprehensive medical evaluation alongside spiritual treatment.",
+              title: t("principle_3_title"),
+              description: t("principle_3_desc"),
             },
             {
-              title: "Education and Awareness",
-              description:
-                "We educate the community about genuine Islamic teachings versus cultural myths and misconceptions about the unseen world. We help people understand the reality of Jinn as described in Qur'an and Sunnah, without exaggeration or minimization. We emphasize that protection from evil is through regular Islamic practices, not superstitions.",
+              title: t("principle_4_title"),
+              description: t("principle_4_desc"),
             },
             {
-              title: "Scholarly Consultation",
-              description:
-                "Our methodologies are reviewed by qualified Islamic scholars to ensure compliance with authentic teachings. We maintain relationships with scholars of different schools of thought while adhering to evidences from Qur'an and Sunnah. We regularly update our knowledge through studying classical and contemporary Islamic scholarship.",
+              title: t("principle_5_title"),
+              description: t("principle_5_desc"),
             },
             {
-              title: "Ethical Standards",
-              description:
-                "We maintain strict ethical standards including patient confidentiality, professional boundaries, and refusing payment for Ruqyah itself (though administrative costs may apply). We never exploit vulnerable people or make false promises. We emphasize that all healing comes from Allah alone.",
+              title: t("principle_6_title"),
+              description: t("principle_6_desc"),
             },
           ].map((principle, index) => (
             <Card
-              key={principle.title}
+              key={index}
               className="group border-2 border-border hover:border-primary/50 bg-card/30 backdrop-blur-sm transition-all duration-500 hover:shadow-lg hover:shadow-primary/10 hover:translate-x-2"
               style={{
                 animationDelay: `${index * 100}ms`,
@@ -236,24 +217,21 @@ export default function AboutPageClient() {
       <section ref={addToRefs} className="container mx-auto px-4 py-20 opacity-0">
         <div className="max-w-3xl mx-auto space-y-8">
           <h2 className="text-4xl font-[family-name:var(--font-cinzel)] font-bold text-center text-balance">
-            Foundations in Revelation
+            {t("foundations_title")}
           </h2>
           <p className="text-center text-muted-foreground leading-relaxed">
-            Our work is firmly grounded in the verses of the Qur&apos;an and authentic teachings of Prophet Muhammad ﷺ.
-            Here are some of the foundational texts that guide our understanding:
+            {t("foundations_desc")}
           </p>
 
           <div className="space-y-6">
             <Card className="border-2 border-primary/30 bg-gradient-to-br from-card/80 to-primary/5 backdrop-blur-sm hover:border-primary/50 transition-all duration-500 hover:shadow-lg hover:shadow-primary/20">
               <CardContent className="p-8 space-y-4">
                 <blockquote className="text-lg text-foreground/90 italic leading-relaxed">
-                  &quot;And We send down of the Qur&apos;an that which is healing and mercy for the believers, but it
-                  does not increase the wrongdoers except in loss.&quot;
+                  &quot;{t("foundation_1_quote")}&quot;
                 </blockquote>
-                <p className="text-primary font-semibold">Surah Al-Isra (17:82)</p>
+                <p className="text-primary font-semibold">{t("foundation_1_src")}</p>
                 <p className="text-sm text-muted-foreground">
-                  This verse establishes the Qur&apos;an as a source of healing—both spiritual and sometimes physical.
-                  It is the foundation of Ruqyah practice in Islam.
+                  {t("foundation_1_desc")}
                 </p>
               </CardContent>
             </Card>
@@ -261,14 +239,11 @@ export default function AboutPageClient() {
             <Card className="border-2 border-primary/30 bg-gradient-to-br from-card/80 to-primary/5 backdrop-blur-sm hover:border-primary/50 transition-all duration-500 hover:shadow-lg hover:shadow-primary/20">
               <CardContent className="p-8 space-y-4">
                 <blockquote className="text-lg text-foreground/90 italic leading-relaxed">
-                  &quot;Say: I seek refuge in the Lord of daybreak, from the evil of that which He created, and from the
-                  evil of darkness when it settles, and from the evil of the blowers in knots, and from the evil of an
-                  envier when he envies.&quot;
+                  &quot;{t("foundation_2_quote")}&quot;
                 </blockquote>
-                <p className="text-primary font-semibold">Surah Al-Falaq (113:1-5)</p>
+                <p className="text-primary font-semibold">{t("foundation_2_src")}</p>
                 <p className="text-sm text-muted-foreground">
-                  One of the protective chapters (Mu&apos;awwidhatayn) that specifically mentions seeking refuge from
-                  magic (&quot;blowers in knots&quot;) and evil eye (&quot;envier&quot;).
+                  {t("foundation_2_desc")}
                 </p>
               </CardContent>
             </Card>
@@ -276,13 +251,11 @@ export default function AboutPageClient() {
             <Card className="border-2 border-primary/30 bg-gradient-to-br from-card/80 to-primary/5 backdrop-blur-sm hover:border-primary/50 transition-all duration-500 hover:shadow-lg hover:shadow-primary/20">
               <CardContent className="p-8 space-y-4">
                 <blockquote className="text-lg text-foreground/90 italic leading-relaxed">
-                  &quot;And if an evil whisper from Shaitan tries to turn you away, then seek refuge in Allah. Verily,
-                  He is the All-Hearer, the All-Knower.&quot;
+                  &quot;{t("foundation_3_quote")}&quot;
                 </blockquote>
-                <p className="text-primary font-semibold">Surah Fussilat (41:36)</p>
+                <p className="text-primary font-semibold">{t("foundation_3_src")}</p>
                 <p className="text-sm text-muted-foreground">
-                  Allah instructs us to seek refuge in Him when facing spiritual attacks or whispers from Shaytan,
-                  establishing the Islamic method of spiritual protection.
+                  {t("foundation_3_desc")}
                 </p>
               </CardContent>
             </Card>
@@ -290,12 +263,11 @@ export default function AboutPageClient() {
             <Card className="border-2 border-primary/30 bg-gradient-to-br from-card/80 to-primary/5 backdrop-blur-sm hover:border-primary/50 transition-all duration-500 hover:shadow-lg hover:shadow-primary/20">
               <CardContent className="p-8 space-y-4">
                 <blockquote className="text-lg text-foreground/90 italic leading-relaxed">
-                  &quot;And He created the jinn from a smokeless flame of fire.&quot;
+                  &quot;{t("foundation_4_quote")}&quot;
                 </blockquote>
-                <p className="text-primary font-semibold">Surah Ar-Rahman (55:15)</p>
+                <p className="text-primary font-semibold">{t("foundation_4_src")}</p>
                 <p className="text-sm text-muted-foreground">
-                  The Qur&apos;an clearly establishes the existence of Jinn as a creation of Allah, made from fire, with
-                  their own will and ability to believe or disbelieve.
+                  {t("foundation_4_desc")}
                 </p>
               </CardContent>
             </Card>
@@ -303,17 +275,90 @@ export default function AboutPageClient() {
             <Card className="border-2 border-primary/30 bg-gradient-to-br from-card/80 to-primary/5 backdrop-blur-sm hover:border-primary/50 transition-all duration-500 hover:shadow-lg hover:shadow-primary/20">
               <CardContent className="p-8 space-y-4">
                 <blockquote className="text-lg text-foreground/90 italic leading-relaxed">
-                  &quot;They followed what the devils gave out (falsely of the magic) in the lifetime of Sulaiman. But
-                  neither did Sulaiman disbelieve, nor did the devils teach men magic, but it was the devils who
-                  disbelieved, teaching men magic...&quot;
+                  &quot;{t("foundation_5_quote")}&quot;
                 </blockquote>
-                <p className="text-primary font-semibold">Surah Al-Baqarah (2:102)</p>
+                <p className="text-primary font-semibold">{t("foundation_5_src")}</p>
                 <p className="text-sm text-muted-foreground">
-                  This verse confirms the reality of magic (Sihr), clarifies that Prophet Sulaiman never practiced it,
-                  and explains its origins with the devils.
+                  {t("foundation_5_desc")}
                 </p>
               </CardContent>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Story Section */}
+      <section className="py-20 px-4">
+        <div className="container mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6 animate-slide-in-left">
+              <h2 className="text-4xl font-[family-name:var(--font-cinzel)] font-bold text-primary">
+                {t("our_story")}
+              </h2>
+              <p className="text-lg text-foreground/70 leading-relaxed">
+                {t("our_story_desc")}
+              </p>
+              <div className="grid grid-cols-2 gap-6">
+                <div className="p-4 bg-primary/5 rounded-lg border border-primary/20">
+                  <p className="text-3xl font-bold text-primary mb-1">15+</p>
+                  <p className="text-sm text-foreground/60">{t("years_experience")}</p>
+                </div>
+                <div className="p-4 bg-primary/5 rounded-lg border border-primary/20">
+                  <p className="text-3xl font-bold text-primary mb-1">500+</p>
+                  <p className="text-sm text-foreground/60">{t("cases_handled")}</p>
+                </div>
+              </div>
+            </div>
+            <div className="relative h-[400px] rounded-2xl overflow-hidden animate-slide-in-right">
+              <Image
+                src="/islamic-educational-setting-with-books-and-peacef.jpg"
+                alt="Our Story"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <SectionDivider />
+
+      {/* Values Section */}
+      <section className="py-20 px-4 bg-primary/5">
+        <div className="container mx-auto">
+          <h2 className="text-4xl font-[family-name:var(--font-cinzel)] font-bold text-primary text-center mb-16">
+            {t("our_values")}
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                title: t("value_authenticity"),
+                desc: t("value_authenticity_desc"),
+                icon: Shield,
+              },
+              {
+                title: t("value_compassion"),
+                desc: t("value_compassion_desc"),
+                icon: Shield, // I'll use Shield for all for now, or Heart if available
+              },
+              {
+                title: t("value_integrity"),
+                desc: t("value_integrity_desc"),
+                icon: Shield,
+              },
+            ].map((value, index) => (
+              <Card key={index} className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-300">
+                <CardContent className="p-8 text-center">
+                  <value.icon className="w-12 h-12 text-primary mx-auto mb-6" />
+                  <h3 className="text-xl font-[family-name:var(--font-cinzel)] font-bold text-primary mb-4">
+                    {value.title}
+                  </h3>
+                  <p className="text-foreground/70">
+                    {value.desc}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
@@ -323,65 +368,53 @@ export default function AboutPageClient() {
       <section ref={addToRefs} className="container mx-auto px-4 py-20 opacity-0">
         <div className="max-w-4xl mx-auto space-y-8">
           <h2 className="text-4xl font-[family-name:var(--font-cinzel)] font-bold text-center text-balance">
-            Our Approach to Spiritual Healing
+            {t("approach_title")}
           </h2>
 
           <Card className="border-2 border-border bg-card/50 backdrop-blur-sm">
             <CardContent className="p-8 space-y-6">
               <div className="space-y-4">
                 <h3 className="text-2xl font-[family-name:var(--font-cinzel)] font-bold text-primary">
-                  1. Comprehensive Assessment
+                  {t("approach_1_title")}
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  We begin with a detailed consultation to understand the symptoms, medical history, and spiritual
-                  practices of the individual. We assess whether the condition may be spiritual, medical, psychological,
-                  or a combination. This includes reviewing any previous medical diagnoses and current treatments.
+                  {t("approach_1_desc")}
                 </p>
               </div>
 
               <div className="space-y-4">
                 <h3 className="text-2xl font-[family-name:var(--font-cinzel)] font-bold text-primary">
-                  2. Diagnostic Ruqyah
+                  {t("approach_2_title")}
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  If spiritual affliction is suspected, we perform diagnostic Ruqyah by reciting specific verses from
-                  the Qur&apos;an and observing reactions. This helps confirm or rule out spiritual causes. We never
-                  rely solely on reactions but consider the complete picture of symptoms and circumstances.
+                  {t("approach_2_desc")}
                 </p>
               </div>
 
               <div className="space-y-4">
                 <h3 className="text-2xl font-[family-name:var(--font-cinzel)] font-bold text-primary">
-                  3. Treatment Protocol
+                  {t("approach_3_title")}
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Treatment involves regular Ruqyah sessions with specific Qur&apos;anic verses, prophetic supplications
-                  (du&apos;a), and prescribed self-care including listening to Ruqyah audio, performing daily adhkar,
-                  and maintaining ritual prayers. We also advise on Islamic lifestyle practices that strengthen
-                  spiritual protection.
+                  {t("approach_3_desc")}
                 </p>
               </div>
 
               <div className="space-y-4">
                 <h3 className="text-2xl font-[family-name:var(--font-cinzel)] font-bold text-primary">
-                  4. Medical Collaboration
+                  {t("approach_4_title")}
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  We maintain open communication with the individual&apos;s healthcare providers when appropriate. If we
-                  suspect psychological or medical conditions, we strongly recommend professional medical evaluation. We
-                  never position spiritual treatment as a replacement for necessary medical care.
+                  {t("approach_4_desc")}
                 </p>
               </div>
 
               <div className="space-y-4">
                 <h3 className="text-2xl font-[family-name:var(--font-cinzel)] font-bold text-primary">
-                  5. Follow-up & Prevention
+                  {t("approach_5_title")}
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Recovery is monitored through regular follow-ups. We educate individuals on preventive measures
-                  including daily adhkar, regular Qur&apos;an recitation, maintaining prayers, and understanding Islamic
-                  spiritual protection. We emphasize building a strong relationship with Allah as the ultimate
-                  protection.
+                  {t("approach_5_desc")}
                 </p>
               </div>
             </CardContent>

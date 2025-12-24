@@ -23,9 +23,12 @@ import {
   ChevronRight,
   Filter,
 } from "lucide-react"
+import { useLanguage } from "@/context/LanguageContext"
 
 export function CasesClientPage() {
+  const { t } = useLanguage()
   const [activeFilter, setActiveFilter] = useState("all")
+
   const sectionsRef = useRef<HTMLElement[]>([])
 
   useEffect(() => {
@@ -56,216 +59,210 @@ export function CasesClientPage() {
   const cases = [
     {
       id: 1,
-      title: "Residential Jinn Possession - Family Home in Suburban Area",
+      title: t("case_1_title"),
       category: "residential",
-      location: "Private Residence, City Suburbs",
-      duration: "3 weeks",
-      date: "October 2024",
+      location: t("case_1_loc"),
+      duration: t("case_1_dur"),
+      date: t("case_1_date"),
       image: "/haunted-house-with-dark-atmosphere-paranormal-inves.jpg",
       symptoms: [
-        "Unexplained sounds and footsteps at night",
-        "Objects moving on their own",
-        "Family members experiencing nightmares",
-        "Youngest child displaying unusual behavior",
-        "Extreme negative energy in specific rooms",
+        t("case_1_symp_1"),
+        t("case_1_symp_2"),
+        t("case_1_symp_3"),
+        t("case_1_symp_4"),
+        t("case_1_symp_5"),
       ],
       investigation: [
-        "Initial consultation with family revealed 6-month history of phenomena",
-        "On-site investigation conducted during evening hours",
-        "Islamic environmental analysis detected strong Jinn presence",
-        "Diagnostic Ruqyah confirmed possession of youngest child",
-        "Previous history of Sihr (black magic) targeting the family",
+        t("case_1_inv_1"),
+        t("case_1_inv_2"),
+        t("case_1_inv_3"),
+        t("case_1_inv_4"),
+        t("case_1_inv_5"),
       ],
       solution: [
-        "Performed comprehensive Ruqyah sessions on affected child (5 sessions)",
-        "Conducted full home spiritual cleansing with Quranic recitation",
-        "Taught family daily protection adhkar and Surah Al-Baqarah routine",
-        "Removed buried magical items found in backyard",
-        "Implemented ongoing protection protocols",
+        t("case_1_sol_1"),
+        t("case_1_sol_2"),
+        t("case_1_sol_3"),
+        t("case_1_sol_4"),
+        t("case_1_sol_5"),
       ],
-      outcome:
-        "Complete resolution within 3 weeks. Child returned to normal behavior, all paranormal activity ceased. Family maintains protective practices and reports no recurrence after 6 months of follow-up.",
-      status: "Resolved",
+      outcome: t("case_1_out"),
+      status: t("status_resolved"),
     },
     {
       id: 2,
-      title: "Commercial Property Investigation - Haunted Office Building",
+      title: t("case_2_title"),
       category: "commercial",
-      location: "Downtown Office Complex",
-      duration: "2 months",
-      date: "August 2024",
+      location: t("case_2_loc"),
+      duration: t("case_2_dur"),
+      date: t("case_2_date"),
       image: "/old-office-building-dark-mysterious-atmosphere-para.jpg",
       symptoms: [
-        "Multiple employees reporting feelings of being watched",
-        "Electronic equipment malfunctioning in specific areas",
-        "Cold spots and temperature fluctuations",
-        "Shadow figures seen by security cameras",
-        "High employee turnover in certain departments",
+        t("case_2_symp_1"),
+        t("case_2_symp_2"),
+        t("case_2_symp_3"),
+        t("case_2_symp_4"),
+        t("case_2_symp_5"),
       ],
       investigation: [
-        "After-hours investigation conducted over 3 nights",
-        "Interviewed 12 employees who experienced phenomena",
-        "Review of historical building records revealed previous occult practices",
-        "Energy mapping identified hotspots of spiritual activity",
-        "Discovered hidden room used for non-Islamic rituals by previous occupants",
+        t("case_2_inv_1"),
+        t("case_2_inv_2"),
+        t("case_2_inv_3"),
+        t("case_2_inv_4"),
+        t("case_2_inv_5"),
       ],
       solution: [
-        "Performed comprehensive building-wide spiritual cleansing",
-        "Recitation of Quranic verses in all affected areas",
-        "Advised structural changes to seal hidden ritual room",
-        "Provided employee education on spiritual protection",
-        "Established regular maintenance protocols for spiritual hygiene",
+        t("case_2_sol_1"),
+        t("case_2_sol_2"),
+        t("case_2_sol_3"),
+        t("case_2_sol_4"),
+        t("case_2_sol_5"),
       ],
-      outcome:
-        "All paranormal activity eliminated after 2 months of treatment and follow-up. Employee satisfaction improved, equipment functioning normally, no new incidents reported. Building management maintains quarterly spiritual maintenance.",
-      status: "Resolved",
+      outcome: t("case_2_out"),
+      status: t("status_resolved"),
     },
     {
       id: 3,
-      title: "Severe Sihr Case - Black Magic Targeting Marriage",
+      title: t("case_3_title"),
       category: "sihr",
-      location: "Private Consultation",
-      duration: "6 weeks",
-      date: "September 2024",
+      location: t("case_3_loc"),
+      duration: t("case_3_dur"),
+      date: t("case_3_date"),
       image: "/spiritual-consultation-room-peaceful-islamic-setting.jpg",
       symptoms: [
-        "Sudden intense marital conflict after years of harmony",
-        "Physical symptoms: severe headaches, unexplained pain",
-        "Aversion to spouse and Islamic practices",
-        "Nightmares featuring specific threatening figures",
-        "Discovered suspicious items in home",
+        t("case_3_symp_1"),
+        t("case_3_symp_2"),
+        t("case_3_symp_3"),
+        t("case_3_symp_4"),
+        t("case_3_symp_5"),
       ],
       investigation: [
-        "Comprehensive spiritual and medical history assessment",
-        "Diagnostic Ruqyah revealed strong reaction confirming Sihr",
-        "Analysis of suspicious items confirmed magical preparation",
-        "Investigation identified jealous family member as likely source",
-        "Pattern matched classic separation magic (Tafriq)",
+        t("case_3_inv_1"),
+        t("case_3_inv_2"),
+        t("case_3_inv_3"),
+        t("case_3_inv_4"),
+        t("case_3_inv_5"),
       ],
       solution: [
-        "Intensive Ruqyah treatment program (twice weekly for 6 weeks)",
-        "Removal and proper disposal of all magical items",
-        "Hijama (cupping therapy) to assist in extracting magic",
-        "Comprehensive home cleansing and protection",
-        "Marriage counseling with Islamic spiritual perspective",
-        "Daily self-Ruqyah protocol established",
+        t("case_3_sol_1"),
+        t("case_3_sol_2"),
+        t("case_3_sol_3"),
+        t("case_3_sol_4"),
+        t("case_3_sol_5"),
+        t("case_3_sol_6"),
       ],
-      outcome:
-        "Gradual improvement observed within 2 weeks. Complete recovery by week 6. Marriage restored to previous harmony. Couple continues protective practices and maintains strong spiritual routine. No recurrence after 8 months.",
-      status: "Resolved",
+      outcome: t("case_3_out"),
+      status: t("status_resolved"),
     },
     {
       id: 4,
-      title: "Haunted Historic Site - Community Center Investigation",
+      title: t("case_4_title"),
       category: "location",
-      location: "Historic Community Building",
-      duration: "1 month",
-      date: "July 2024",
+      location: t("case_4_loc"),
+      duration: t("case_4_dur"),
+      date: t("case_4_date"),
       image: "/historic-building-with-islamic-architecture-mysterio.jpg",
       symptoms: [
-        "Building unusable due to intense paranormal activity",
-        "Visitors experiencing severe anxiety and panic attacks",
-        "Objects thrown by unseen forces",
-        "Apparitions and voices heard throughout building",
-        "History of tragic events at the location",
+        t("case_4_symp_1"),
+        t("case_4_symp_2"),
+        t("case_4_symp_3"),
+        t("case_4_symp_4"),
+        t("case_4_symp_5"),
       ],
       investigation: [
-        "Multi-day on-site investigation with full team",
-        "Historical research revealed site's troubling past",
-        "Documented evidence of poltergeist-like activity",
-        "Islamic analysis confirmed multiple Jinn inhabiting the space",
-        "Site had been neglected spiritually for decades",
+        t("case_4_inv_1"),
+        t("case_4_inv_2"),
+        t("case_4_inv_3"),
+        t("case_4_inv_4"),
+        t("case_4_inv_5"),
       ],
       solution: [
-        "Major spiritual reclamation project over 4 weeks",
-        "Daily Quranic recitation throughout entire building",
-        "Removed items connected to past occult practices",
-        "Structural cleansing and spiritual fumigation",
-        "Re-consecrated space with proper Islamic protocols",
-        "Established permanent spiritual maintenance plan",
+        t("case_4_sol_1"),
+        t("case_4_sol_2"),
+        t("case_4_sol_3"),
+        t("case_4_sol_4"),
+        t("case_4_sol_5"),
+        t("case_4_sol_6"),
       ],
-      outcome:
-        "Site fully reclaimed and now serves as peaceful community center. All paranormal activity eliminated. Regular spiritual maintenance prevents recurrence. Building now used for Islamic education and community gatherings with no incidents.",
-      status: "Resolved",
+      outcome: t("case_4_out"),
+      status: t("status_resolved"),
     },
     {
       id: 5,
-      title: "Evil Eye and Hasad - Business Decline Investigation",
+      title: t("case_5_title"),
       category: "evil-eye",
-      location: "Small Business Office",
-      duration: "3 weeks",
-      date: "November 2024",
+      location: t("case_5_loc"),
+      duration: t("case_5_dur"),
+      date: t("case_5_date"),
       image: "/small-business-office-with-islamic-decor-peaceful-pr.jpg",
       symptoms: [
-        "Sudden unexplainable business decline after success",
-        "Owner experiencing severe fatigue and demotivation",
-        "Equipment constantly breaking down",
-        "Loss of key clients for no apparent reason",
-        "Strong negative energy in business premises",
+        t("case_5_symp_1"),
+        t("case_5_symp_2"),
+        t("case_5_symp_3"),
+        t("case_5_symp_4"),
+        t("case_5_symp_5"),
       ],
       investigation: [
-        "Business and spiritual history assessment",
-        "On-site evaluation of business environment",
-        "Diagnostic Ruqyah indicated strong Evil Eye and Hasad (envy)",
-        "Identified envious former business partner as likely source",
-        "Pattern consistent with spiritual targeting of livelihood",
+        t("case_5_inv_1"),
+        t("case_5_inv_2"),
+        t("case_5_inv_3"),
+        t("case_5_inv_4"),
+        t("case_5_inv_5"),
       ],
       solution: [
-        "Comprehensive Ruqyah treatment for business owner (4 sessions)",
-        "Full business premises spiritual cleansing",
-        "Implemented daily protection adhkar and Quranic verses",
-        "Business restructuring advice with spiritual considerations",
-        "Protection protocols for business dealings",
-        "Regular spiritual maintenance schedule established",
+        t("case_5_sol_1"),
+        t("case_5_sol_2"),
+        t("case_5_sol_3"),
+        t("case_5_sol_4"),
+        t("case_5_sol_5"),
+        t("case_5_sol_6"),
       ],
-      outcome:
-        "Business began recovering within 2 weeks. Owner's energy and motivation fully restored. New clients acquired, equipment functioning normally. Business now exceeds previous success level. Owner maintains consistent spiritual protection practices.",
-      status: "Resolved",
+      outcome: t("case_5_out"),
+      status: t("status_resolved"),
     },
     {
       id: 6,
-      title: "Demonic Oppression - Long-term Psychological Warfare",
+      title: t("case_6_title"),
       category: "possession",
-      location: "Private Treatment",
-      duration: "4 months",
-      date: "June 2024",
+      location: t("case_6_loc"),
+      duration: t("case_6_dur"),
+      date: t("case_6_date"),
       image: "/peaceful-islamic-prayer-room-spiritual-healing-atmos.jpg",
       symptoms: [
-        "Years of unexplained depression and suicidal thoughts",
-        "Hearing voices with blasphemous suggestions",
-        "Physical paralysis during sleep (sleep paralysis)",
-        "Intense aversion to Quran and prayer",
-        "Multiple failed psychiatric treatments",
+        t("case_6_symp_1"),
+        t("case_6_symp_2"),
+        t("case_6_symp_3"),
+        t("case_6_symp_4"),
+        t("case_6_symp_5"),
       ],
       investigation: [
-        "Comprehensive medical and psychiatric history review",
-        "Confirmed previous proper medical treatment with limited success",
-        "Diagnostic Ruqyah revealed severe Jinn possession",
-        "Pattern indicated long-term spiritual warfare",
-        "Patient had weak spiritual foundation and protection",
+        t("case_6_inv_1"),
+        t("case_6_inv_2"),
+        t("case_6_inv_3"),
+        t("case_6_inv_4"),
+        t("case_6_inv_5"),
       ],
       solution: [
-        "Long-term intensive Ruqyah program (weekly sessions for 4 months)",
-        "Coordinated care with psychiatrist (complementary approach)",
-        "Rebuilt spiritual foundation through Islamic education",
-        "Taught comprehensive self-Ruqyah techniques",
-        "Family therapy and support system strengthening",
-        "Gradual reduction of psychiatric medication under doctor supervision",
+        t("case_6_sol_1"),
+        t("case_6_sol_2"),
+        t("case_6_sol_3"),
+        t("case_6_sol_4"),
+        t("case_6_sol_5"),
+        t("case_6_sol_6"),
       ],
-      outcome:
-        "Complete spiritual liberation achieved after 4 months. Depression eliminated, voices ceased. Patient now prays regularly and maintains strong spiritual practice. Psychiatric medication discontinued with doctor approval. Now helps others facing similar struggles.",
-      status: "Resolved",
+      outcome: t("case_6_out"),
+      status: t("status_resolved"),
     },
   ]
 
   const categories = [
-    { id: "all", label: "All Cases", icon: FileText },
-    { id: "residential", label: "Residential", icon: Home },
-    { id: "commercial", label: "Commercial", icon: Building2 },
-    { id: "possession", label: "Possession", icon: AlertCircle },
-    { id: "sihr", label: "Black Magic", icon: Shield },
-    { id: "evil-eye", label: "Evil Eye", icon: AlertCircle },
-    { id: "location", label: "Locations", icon: MapPin },
+    { id: "all", label: t("cases_cat_all"), icon: FileText },
+    { id: "residential", label: t("cases_cat_res"), icon: Home },
+    { id: "commercial", label: t("cases_cat_com"), icon: Building2 },
+    { id: "possession", label: t("cases_cat_poss"), icon: AlertCircle },
+    { id: "sihr", label: t("cases_cat_sihr"), icon: Shield },
+    { id: "evil-eye", label: t("cases_cat_eye"), icon: AlertCircle },
+    { id: "location", label: t("cases_cat_loc"), icon: MapPin },
   ]
 
   const filteredCases = activeFilter === "all" ? cases : cases.filter((c) => c.category === activeFilter)
@@ -286,15 +283,16 @@ export function CasesClientPage() {
         </div>
         <div className="relative max-w-4xl mx-auto text-center space-y-6">
           <h1 className="text-5xl md:text-6xl font-[family-name:var(--font-cinzel)] font-bold text-balance animate-fade-in-up">
-            Case <span className="text-primary">Studies</span>
+            {t("cases_title")}
           </h1>
           <p className="text-xl text-muted-foreground animate-fade-in-up [animation-delay:200ms] opacity-0 [animation-fill-mode:forwards] text-pretty">
-            Real investigations and successful resolutions of paranormal cases using authentic Islamic methodology
+            {t("cases_subtitle")}
           </p>
           <p className="text-sm text-muted-foreground/80 animate-fade-in-up [animation-delay:400ms] opacity-0 [animation-fill-mode:forwards] max-w-2xl mx-auto">
             All cases presented with permission and identifying details anonymized to protect client privacy
           </p>
         </div>
+
       </section>
 
       <SectionDivider />
@@ -303,10 +301,10 @@ export function CasesClientPage() {
       <section ref={addToRefs} className="container mx-auto px-4 py-12 opacity-0">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
           {[
-            { number: "500+", label: "Cases Resolved" },
-            { number: "95%", label: "Success Rate" },
-            { number: "15+", label: "Years Experience" },
-            { number: "24/7", label: "Support Available" },
+            { number: "500+", label: t("cases_stat_resolved") },
+            { number: "95%", label: t("cases_stat_rate") },
+            { number: "15+", label: t("cases_stat_exp") },
+            { number: "24/7", label: t("cases_stat_support") },
           ].map((stat, index) => (
             <Card
               key={stat.label}
@@ -332,7 +330,7 @@ export function CasesClientPage() {
       <section ref={addToRefs} className="container mx-auto px-4 py-8 opacity-0">
         <div className="flex items-center gap-3 mb-6">
           <Filter className="h-5 w-5 text-primary" />
-          <h2 className="text-xl font-[family-name:var(--font-cinzel)] font-bold">Filter by Category</h2>
+          <h2 className="text-xl font-[family-name:var(--font-cinzel)] font-bold">{t("cases_filter_title")}</h2>
         </div>
         <div className="flex flex-wrap gap-3">
           {categories.map((category) => (
@@ -371,11 +369,10 @@ export function CasesClientPage() {
                   />
                   <div className="absolute top-4 left-4">
                     <span
-                      className={`px-4 py-2 rounded-full text-sm font-bold backdrop-blur-md ${
-                        caseItem.status === "Resolved"
-                          ? "bg-green-500/20 text-green-300 border border-green-500/50"
-                          : "bg-yellow-500/20 text-yellow-300 border border-yellow-500/50"
-                      }`}
+                      className={`px-4 py-2 rounded-full text-sm font-bold backdrop-blur-md ${caseItem.status === "Resolved"
+                        ? "bg-green-500/20 text-green-300 border border-green-500/50"
+                        : "bg-yellow-500/20 text-yellow-300 border border-yellow-500/50"
+                        }`}
                     >
                       {caseItem.status}
                     </span>
@@ -408,7 +405,7 @@ export function CasesClientPage() {
                   <div className="space-y-4">
                     <div>
                       <h4 className="text-lg font-[family-name:var(--font-cinzel)] font-bold text-primary mb-3">
-                        Reported Symptoms
+                        {t("label_symptoms")}
                       </h4>
                       <ul className="space-y-2">
                         {caseItem.symptoms.slice(0, 3).map((symptom, idx) => (
@@ -422,7 +419,7 @@ export function CasesClientPage() {
 
                     <div>
                       <h4 className="text-lg font-[family-name:var(--font-cinzel)] font-bold text-primary mb-3">
-                        Investigation Findings
+                        {t("label_findings")}
                       </h4>
                       <ul className="space-y-2">
                         {caseItem.investigation.slice(0, 3).map((finding, idx) => (
@@ -436,7 +433,7 @@ export function CasesClientPage() {
 
                     <div>
                       <h4 className="text-lg font-[family-name:var(--font-cinzel)] font-bold text-primary mb-3">
-                        Treatment Applied
+                        {t("label_treatment")}
                       </h4>
                       <ul className="space-y-2">
                         {caseItem.solution.slice(0, 3).map((solution, idx) => (
@@ -450,7 +447,7 @@ export function CasesClientPage() {
 
                     <div className="pt-4 border-t border-border/50">
                       <h4 className="text-lg font-[family-name:var(--font-cinzel)] font-bold text-green-500 mb-2">
-                        Final Outcome
+                        {t("label_outcome")}
                       </h4>
                       <p className="text-sm text-muted-foreground leading-relaxed">{caseItem.outcome}</p>
                     </div>
@@ -468,36 +465,36 @@ export function CasesClientPage() {
       <section ref={addToRefs} className="container mx-auto px-4 py-20 opacity-0">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-[family-name:var(--font-cinzel)] font-bold text-center text-balance mb-12">
-            Our Investigation & Treatment Methodology
+            {t("cases_meth_title")}
           </h2>
 
           <Card className="border-2 border-primary/30 bg-card/50 backdrop-blur-sm">
             <CardContent className="p-8 lg:p-12 space-y-8">
               {[
                 {
-                  title: "Islamic Foundation",
+                  title: t("cases_meth_1_title"),
                   description:
-                    "All our investigations and treatments are firmly rooted in Qur'an and authentic Sunnah. We avoid all innovations, superstitions, and practices not sanctioned by Islamic scholarship.",
+                    t("cases_meth_1_desc"),
                 },
                 {
-                  title: "Scientific Approach",
+                  title: t("cases_meth_2_title"),
                   description:
-                    "We combine spiritual knowledge with logical analysis, documentation, and systematic investigation methods. Medical and psychological factors are always considered.",
+                    t("cases_meth_2_desc"),
                 },
                 {
-                  title: "Confidentiality & Ethics",
+                  title: t("cases_meth_3_title"),
                   description:
-                    "Complete client confidentiality is maintained. We never exploit vulnerable individuals, charge exploitative fees, or make unrealistic promises.",
+                    t("cases_meth_3_desc"),
                 },
                 {
-                  title: "Comprehensive Care",
+                  title: t("cases_meth_4_title"),
                   description:
-                    "We address the spiritual, psychological, physical, and environmental aspects of each case, providing holistic solutions and ongoing support.",
+                    t("cases_meth_4_desc"),
                 },
                 {
-                  title: "Evidence-Based",
+                  title: t("cases_meth_5_title"),
                   description:
-                    "Cases are thoroughly documented with written reports, evidence collection, and progress tracking. We maintain high professional standards.",
+                    t("cases_meth_5_desc"),
                 },
               ].map((item, index) => (
                 <div key={index} className="flex gap-4">
@@ -526,22 +523,21 @@ export function CasesClientPage() {
 
           <CardContent className="relative z-10 p-12 text-center space-y-6">
             <h2 className="text-3xl md:text-4xl font-[family-name:var(--font-cinzel)] font-bold text-balance">
-              Need Help with Your Case?
+              {t("cases_cta_title")}
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed text-pretty">
-              Every case is unique. Contact us for a confidential consultation to discuss your situation and how we can
-              help.
+              {t("cases_cta_desc")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <Button asChild size="lg" className="group">
                 <Link href="/contact">
-                  Schedule Consultation
+                  {t("cases_btn_schedule")}
                   <ChevronRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="group bg-transparent">
                 <Link href="/services">
-                  View All Services
+                  {t("view_all_services")}
                   <ChevronRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
